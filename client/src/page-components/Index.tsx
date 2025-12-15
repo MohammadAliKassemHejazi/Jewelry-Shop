@@ -19,73 +19,6 @@ const Index = () => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterLoading, setNewsletterLoading] = useState(false);
 
-  // Fallback dummy data
-  const dummyProducts: Product[] = [
-    {
-      id: "1",
-      name: "Rose Gold Diamond Ring",
-      description: "Elegant rose gold ring with brilliant diamond",
-      price: 1299,
-      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400",
-      category: "Rings",
-      stock: 10,
-      featured: true,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    },
-    {
-      id: "2",
-      name: "Pearl Drop Earrings",
-      description: "Classic pearl drop earrings for any occasion",
-      price: 299,
-      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400",
-      category: "Earrings",
-      stock: 15,
-      featured: true,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    },
-    {
-      id: "3",
-      name: "Elegant Gold Necklace",
-      description: "Timeless gold necklace with intricate design",
-      price: 899,
-      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400",
-      category: "Necklaces",
-      stock: 8,
-      featured: true,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    }
-  ];
-
-  const dummyTestimonials: Testimonial[] = [
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      text: "Absolutely stunning jewelry! The quality is exceptional and the designs are timeless.",
-      rating: 5,
-      verified: true,
-      createdAt: new Date().toISOString()
-    },
-    {
-      id: "2",
-      name: "Emma Davis",
-      text: "I've bought several pieces and each one is more beautiful than the last. Highly recommend!",
-      rating: 5,
-      verified: true,
-      createdAt: new Date().toISOString()
-    },
-    {
-      id: "3",
-      name: "Lisa Chen",
-      text: "The customer service is outstanding and the jewelry is exactly as pictured. Love it!",
-      rating: 5,
-      verified: true,
-      createdAt: new Date().toISOString()
-    }
-  ];
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -102,23 +35,22 @@ const Index = () => {
         if (productsResponse.status === 'fulfilled') {
           setFeaturedProducts(productsResponse.value);
         } else {
-          console.warn('Failed to fetch featured products, using dummy data:', productsResponse.reason);
-          setFeaturedProducts(dummyProducts);
+          console.error('Failed to fetch featured products:', productsResponse.reason);
+          setFeaturedProducts([]);
         }
 
         // Handle testimonials response
         if (testimonialsResponse.status === 'fulfilled') {
           setTestimonials(testimonialsResponse.value);
         } else {
-          console.warn('Failed to fetch testimonials, using dummy data:', testimonialsResponse.reason);
-          setTestimonials(dummyTestimonials);
+          console.error('Failed to fetch testimonials:', testimonialsResponse.reason);
+          setTestimonials([]);
         }
       } catch (err) {
         console.error('Error fetching data:', err);
         setError('Failed to load data');
-        // Use dummy data as fallback
-        setFeaturedProducts(dummyProducts);
-        setTestimonials(dummyTestimonials);
+        setFeaturedProducts([]);
+        setTestimonials([]);
       } finally {
         setLoading(false);
       }

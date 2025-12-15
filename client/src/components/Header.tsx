@@ -5,8 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, User, Search, Menu, X, Settings, LogOut, Heart } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useCart } from "@/contexts/CartContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { cartApi } from "@/services/api";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,14 +21,24 @@ const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
-  const { itemCount } = useCart();
   const { favorites } = useFavorites();
+  const [itemCount, setItemCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const fetchCartCount = async () => {
+      try {
+        const count = await cartApi.getItemCount();
+        setItemCount(count);
+      } catch (error) {
+        console.error("Failed to fetch cart count:", error);
+      }
+    };
+
+    fetchCartCount();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

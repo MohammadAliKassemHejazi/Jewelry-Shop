@@ -7,7 +7,6 @@ import articleReducer from "./slices/articleSlice";
 import shopReducer from "./slices/shopSlice";
 import storeReducer from "./slices/storeSlice";
 import utilsReducer from "./slices/utilsSlice";
-import cartReducer from "./slices/cartSlice";
 import paymentReducer from "./slices/paymentSlice";
 import orderReducer from "./slices/orderSlice";
 import permissionReducer from "./slices/permissionSlice";
@@ -23,7 +22,6 @@ const reducer = {
 	products: shopReducer,
 	store : storeReducer,
 	utils: utilsReducer,
-	cart: cartReducer,
 	payment: paymentReducer,
 	order: orderReducer,
 	permission: permissionReducer,

@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Heart, ShoppingCart, Star, Eye } from 'lucide-react';
 import { Product } from '@/types';
 import { useFavorites } from '@/contexts/FavoritesContext';
-import { useCart } from '@/contexts/CartContext';
+import { cartApi } from '@/services/api';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
@@ -20,13 +20,17 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
   showQuickActions = true 
 }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
-  const { addToCart, isInCart, getCartItem } = useCart();
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(product, 1);
-    toast.success(`${product.name} added to cart`);
+    try {
+      await cartApi.addItem(product.id, 1);
+      toast.success(`${product.name} added to cart`);
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
+      toast.error('Failed to add to cart');
+    }
   };
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
@@ -37,9 +41,7 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
     toast.success(isFav ? 'Added to favorites' : 'Removed from favorites');
   };
 
-  const cartItem = getCartItem(product.id);
   const isFav = isFavorite(product.id);
-  const inCart = isInCart(product.id);
 
   return (
     <Card className="group relative overflow-hidden hover:shadow-lg transition-all duration-300">
@@ -170,7 +172,7 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
               disabled={product.stock === 0}
             >
               <ShoppingCart className="h-4 w-4 mr-1" />
-              {inCart ? `In Cart (${cartItem?.quantity || 0})` : 'Add to Cart'}
+              Add to Cart
             </Button>
             
             <Button

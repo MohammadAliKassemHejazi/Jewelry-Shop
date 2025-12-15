@@ -24,13 +24,13 @@ function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
     <ReduxProvider>
       <AuthProvider>
-        <FavoritesProvider>
-          <CartProvider>
+        <CartProvider>
+          <FavoritesProvider>
             <TooltipProvider>
               {children}
             </TooltipProvider>
-          </CartProvider>
-        </FavoritesProvider>
+          </FavoritesProvider>
+        </CartProvider>
       </AuthProvider>
     </ReduxProvider>
   )

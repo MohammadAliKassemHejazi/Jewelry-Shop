@@ -41,9 +41,9 @@ const ProductCard = ({ product, viewMode = "grid" }: ProductCardProps) => {
             <div className="flex-1 p-6">
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  {product.category && (
+                  {product.categoryId && (
                     <p className="text-sm text-primary font-poppins font-medium mb-1 capitalize">
-                      {product.category}
+                      {product.categoryId}
                     </p>
                   )}
                   <h3 className="font-playfair text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300">
@@ -125,9 +125,9 @@ const ProductCard = ({ product, viewMode = "grid" }: ProductCardProps) => {
         </div>
         
         <div className="p-6">
-          {product.category && (
+          {product.categoryId && (
             <p className="text-sm text-primary font-poppins font-medium mb-2 capitalize transform group-hover:scale-105 transition-transform duration-300">
-              {product.category}
+              {product.categoryId}
             </p>
           )}
           <h3 className="font-playfair text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">

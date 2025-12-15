@@ -37,7 +37,7 @@ const ProductDetail = () => {
       "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600",
       "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600"
     ],
-    category: "Rings",
+    categoryId: "Rings",
     stock: 10,
     materials: ["18K Rose Gold", "Diamond"],
     gemstones: ["Diamond (1.2 ct)"],
@@ -55,7 +55,7 @@ const ProductDetail = () => {
       description: "Classic pearl drop earrings for any occasion",
       price: 299,
       image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300",
-      category: "Earrings",
+      categoryId: "Earrings",
       stock: 15,
       materials: ["Sterling Silver", "Pearl"],
       createdAt: new Date().toISOString(),
@@ -67,7 +67,7 @@ const ProductDetail = () => {
       description: "Timeless gold necklace with intricate design",
       price: 899,
       image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300",
-      category: "Necklaces",
+      categoryId: "Necklaces",
       stock: 8,
       materials: ["Gold"],
       createdAt: new Date().toISOString(),
@@ -79,7 +79,7 @@ const ProductDetail = () => {
       description: "Sparkling diamond tennis bracelet",
       price: 1599,
       image: "https://images.unsplash.com/photo-1617038220319-276d7f6b5b5e?w=300",
-      category: "Bracelets",
+      categoryId: "Bracelets",
       stock: 5,
       materials: ["White Gold", "Diamond"],
       createdAt: new Date().toISOString(),
@@ -247,9 +247,9 @@ const ProductDetail = () => {
           <AnimatedSection delay={200}>
             <div className="space-y-6">
               <div>
-                {product.category && (
+                {product.categoryId && (
                   <Badge variant="outline" className="mb-2">
-                    {product.category}
+                    {product.categoryId}
                   </Badge>
                 )}
                 <h1 className="font-playfair text-3xl font-bold text-gray-900 mb-2">
