@@ -367,7 +367,7 @@ const AdminProducts: React.FC = () => {
 // Product Form Component
 const ProductForm: React.FC<{
   formData: Partial<ProductCreateRequest>;
-  setFormData: (data: Partial<ProductCreateRequest>) => void;
+  setFormData: React.Dispatch<React.SetStateAction<Partial<ProductCreateRequest>>>;
   categories: Category[];
 }> = ({ formData, setFormData, categories }) => {
   return (
@@ -378,7 +378,7 @@ const ProductForm: React.FC<{
           <Input
             id="name"
             value={formData.name || ''}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
             placeholder="Enter product name"
           />
         </div>
@@ -387,7 +387,7 @@ const ProductForm: React.FC<{
           <Input
             id="sku"
             value={formData.sku || ''}
-            onChange={(e) => setFormData({ ...formData, sku: e.target.value })}
+            onChange={(e) => setFormData(prev => ({ ...prev, sku: e.target.value }))}
             placeholder="Enter SKU"
           />
         </div>
@@ -398,7 +398,7 @@ const ProductForm: React.FC<{
         <Textarea
           id="description"
           value={formData.description || ''}
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
           placeholder="Enter product description"
           rows={3}
         />
@@ -411,7 +411,7 @@ const ProductForm: React.FC<{
             id="price"
             type="number"
             value={formData.price || 0}
-            onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) || 0 })}
+            onChange={(e) => setFormData(prev => ({ ...prev, price: parseFloat(e.target.value) || 0 }))}
             placeholder="0.00"
           />
         </div>
@@ -421,7 +421,7 @@ const ProductForm: React.FC<{
             id="stock"
             type="number"
             value={formData.stock || 0}
-            onChange={(e) => setFormData({ ...formData, stock: parseInt(e.target.value) || 0 })}
+            onChange={(e) => setFormData(prev => ({ ...prev, stock: parseInt(e.target.value) || 0 }))}
             placeholder="0"
           />
         </div>
@@ -431,7 +431,7 @@ const ProductForm: React.FC<{
             id="weight"
             type="number"
             value={formData.weight || 0}
-            onChange={(e) => setFormData({ ...formData, weight: parseFloat(e.target.value) || 0 })}
+            onChange={(e) => setFormData(prev => ({ ...prev, weight: parseFloat(e.target.value) || 0 }))}
             placeholder="0"
           />
         </div>
@@ -442,7 +442,7 @@ const ProductForm: React.FC<{
           <Label htmlFor="category">Category</Label>
           <Select
             value={formData.categoryId || ''}
-            onValueChange={(value) => setFormData({ ...formData, categoryId: value })}
+            onValueChange={(value) => setFormData(prev => ({ ...prev, categoryId: value }))}
           >
             <SelectTrigger>
               <SelectValue placeholder="Select category" />
@@ -461,7 +461,7 @@ const ProductForm: React.FC<{
           <Input
             id="image"
             value={formData.image || ''}
-            onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+            onChange={(e) => setFormData(prev => ({ ...prev, image: e.target.value }))}
             placeholder="https://example.com/image.jpg"
           />
         </div>
@@ -473,7 +473,7 @@ const ProductForm: React.FC<{
             type="checkbox"
             id="featured"
             checked={formData.featured || false}
-            onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+            onChange={(e) => setFormData(prev => ({ ...prev, featured: e.target.checked }))}
             className="rounded"
           />
           <Label htmlFor="featured">Featured</Label>
@@ -483,7 +483,7 @@ const ProductForm: React.FC<{
             type="checkbox"
             id="onSale"
             checked={formData.onSale || false}
-            onChange={(e) => setFormData({ ...formData, onSale: e.target.checked })}
+            onChange={(e) => setFormData(prev => ({ ...prev, onSale: e.target.checked }))}
             className="rounded"
           />
           <Label htmlFor="onSale">On Sale</Label>
@@ -497,7 +497,7 @@ const ProductForm: React.FC<{
             id="salePrice"
             type="number"
             value={formData.salePrice || 0}
-            onChange={(e) => setFormData({ ...formData, salePrice: parseFloat(e.target.value) || 0 })}
+            onChange={(e) => setFormData(prev => ({ ...prev, salePrice: parseFloat(e.target.value) || 0 }))}
             placeholder="0.00"
           />
         </div>

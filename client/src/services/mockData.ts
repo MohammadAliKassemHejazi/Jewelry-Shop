@@ -7,8 +7,8 @@ export const mockProducts: Product[] = [
     name: 'Classic Diamond Engagement Ring',
     description: 'A timeless diamond engagement ring featuring a brilliant cut center stone set in 18k white gold.',
     price: 2500.00,
-    category: 'Rings',
-    subcategory: 'Engagement Rings',
+    categoryId: 'Rings',
+    subCategoryId: 'Engagement Rings',
     stock: 5,
     image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500',
     images: [
@@ -32,8 +32,8 @@ export const mockProducts: Product[] = [
     name: 'Pearl Drop Earrings',
     description: 'Elegant pearl drop earrings perfect for special occasions.',
     price: 450.00,
-    category: 'Earrings',
-    subcategory: 'Pearl Earrings',
+    categoryId: 'Earrings',
+    subCategoryId: 'Pearl Earrings',
     stock: 12,
     image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500',
     images: [
@@ -57,7 +57,7 @@ export const mockProducts: Product[] = [
     name: 'Diamond Tennis Bracelet',
     description: 'Sparkling diamond tennis bracelet with brilliant cut diamonds.',
     price: 1800.00,
-    category: 'Bracelets',
+    categoryId: 'Bracelets',
     stock: 8,
     image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500',
     images: [
@@ -80,8 +80,8 @@ export const mockProducts: Product[] = [
     name: 'Emerald Pendant Necklace',
     description: 'Stunning emerald pendant necklace set in 18k yellow gold.',
     price: 1200.00,
-    category: 'Necklaces',
-    subcategory: 'Diamond Necklaces',
+    categoryId: 'Necklaces',
+    subCategoryId: 'Diamond Necklaces',
     stock: 6,
     image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500',
     images: [
@@ -104,8 +104,8 @@ export const mockProducts: Product[] = [
     name: 'Wedding Band Set',
     description: 'Matching wedding band set for couples.',
     price: 800.00,
-    category: 'Rings',
-    subcategory: 'Wedding Rings',
+    categoryId: 'Rings',
+    subCategoryId: 'Wedding Rings',
     stock: 15,
     image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500',
     images: [
@@ -199,7 +199,7 @@ export const mockApi = {
     }
     
     if (filters?.category) {
-      products = products.filter(p => p.category === filters.category);
+      products = products.filter(p => p.categoryId === filters.category);
     }
     
     if (filters?.featured) {

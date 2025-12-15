@@ -4,8 +4,8 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  category: string;
-  subcategory?: string;
+  categoryId: string;
+  subCategoryId?: string;
   stock: number;
   image: string;
   images?: string[];
@@ -31,8 +31,8 @@ export interface ProductCreateRequest {
   name: string;
   description: string;
   price: number;
-  category: string;
-  subcategory?: string;
+  categoryId: string;
+  subCategoryId?: string;
   stock: number;
   image: string;
   images?: string[];
@@ -61,6 +61,8 @@ export interface User {
   isAdmin?: boolean;
   avatar?: string;
   address?: Address;
+  isActive?: boolean;
+  lastLoginAt?: string;
   createdAt?: string;
   updatedAt?: string;
 }

@@ -412,3 +412,52 @@ export const usersApi = {
     await httpClient.delete(`/api/users/${id}`);
   },
 };
+
+// Testimonials API
+export const testimonialsApi = {
+  getVerified: async (limit = 3): Promise<Testimonial[]> => {
+    const response = await httpClient.get(`/api/testimonials/verified?limit=${limit}`);
+    return response.data.data || [];
+  },
+
+  create: async (testimonial: Partial<Testimonial>): Promise<Testimonial> => {
+    const response = await httpClient.post('/api/testimonials', testimonial);
+    return response.data.data;
+  },
+};
+
+// Newsletter API
+export const newsletterApi = {
+  subscribe: async (email: string): Promise<any> => {
+    const response = await httpClient.post('/api/newsletter/subscribe', { email });
+    return response.data;
+  },
+
+  unsubscribe: async (email: string): Promise<any> => {
+    const response = await httpClient.post('/api/newsletter/unsubscribe', { email });
+    return response.data;
+  },
+};
+
+// Favorites API
+export const favoritesApi = {
+  getAll: async (): Promise<Product[]> => {
+    const response = await httpClient.get('/api/favorites');
+    return response.data.data || [];
+  },
+
+  add: async (productId: string): Promise<any> => {
+    const response = await httpClient.post('/api/favorites', { productId });
+    return response.data;
+  },
+
+  remove: async (productId: string): Promise<any> => {
+    const response = await httpClient.delete(`/api/favorites/${productId}`);
+    return response.data;
+  },
+
+  clear: async (): Promise<any> => {
+    const response = await httpClient.delete('/api/favorites');
+    return response.data;
+  },
+};

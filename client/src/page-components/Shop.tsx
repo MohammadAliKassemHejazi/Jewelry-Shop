@@ -26,89 +26,6 @@ const Shop = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-  // Fallback dummy data
-  const dummyProducts: Product[] = [
-    {
-      id: "1",
-      name: "Rose Gold Diamond Ring",
-      description: "Elegant rose gold ring with brilliant diamond",
-      price: 1299,
-      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400",
-      category: "Rings",
-      stock: 10,
-      materials: ["Rose Gold", "Diamond"],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    },
-    {
-      id: "2",
-      name: "Pearl Drop Earrings",
-      description: "Classic pearl drop earrings for any occasion",
-      price: 299,
-      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400",
-      category: "Earrings",
-      stock: 15,
-      materials: ["Sterling Silver", "Pearl"],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    },
-    {
-      id: "3",
-      name: "Elegant Gold Necklace",
-      description: "Timeless gold necklace with intricate design",
-      price: 899,
-      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400",
-      category: "Necklaces",
-      stock: 8,
-      materials: ["Gold"],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    },
-    {
-      id: "4",
-      name: "Diamond Tennis Bracelet",
-      description: "Sparkling diamond tennis bracelet",
-      price: 1599,
-      image: "https://images.unsplash.com/photo-1617038220319-276d7f6b5b5e?w=400",
-      category: "Bracelets",
-      stock: 5,
-      materials: ["White Gold", "Diamond"],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    },
-    {
-      id: "5",
-      name: "Emerald Engagement Ring",
-      description: "Stunning emerald engagement ring",
-      price: 2299,
-      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400",
-      category: "Rings",
-      stock: 3,
-      materials: ["Platinum", "Emerald"],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    },
-    {
-      id: "6",
-      name: "Sapphire Stud Earrings",
-      description: "Beautiful sapphire stud earrings",
-      price: 799,
-      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400",
-      category: "Earrings",
-      stock: 12,
-      materials: ["White Gold", "Sapphire"],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    }
-  ];
-
-  const dummyCategories: Category[] = [
-    { id: "1", name: "Rings", description: "Beautiful rings for every occasion", createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
-    { id: "2", name: "Earrings", description: "Elegant earrings to complement your style", createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
-    { id: "3", name: "Necklaces", description: "Stunning necklaces for any outfit", createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
-    { id: "4", name: "Bracelets", description: "Charming bracelets to complete your look", createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }
-  ];
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -130,8 +47,8 @@ const Shop = () => {
         if (categoriesResponse.status === 'fulfilled') {
           setCategories(categoriesResponse.value);
         } else {
-          console.warn('Failed to fetch categories, using dummy data:', categoriesResponse.reason);
-          setCategories(dummyCategories);
+          console.error('Failed to fetch categories:', categoriesResponse.reason);
+          setCategories([]);
         }
 
         // Handle products response
@@ -139,15 +56,15 @@ const Shop = () => {
           setProducts(productsResponse.value.data);
           setTotalPages(productsResponse.value.pagination.totalPages);
         } else {
-          console.warn('Failed to fetch products, using dummy data:', productsResponse.reason);
-          setProducts(dummyProducts);
+          console.error('Failed to fetch products:', productsResponse.reason);
+          setProducts([]);
           setTotalPages(1);
         }
       } catch (err) {
         console.error('Error fetching data:', err);
         setError('Failed to load products');
-        setProducts(dummyProducts);
-        setCategories(dummyCategories);
+        setProducts([]);
+        setCategories([]);
         setTotalPages(1);
       } finally {
         setLoading(false);
@@ -174,15 +91,7 @@ const Shop = () => {
     setCurrentPage(1);
   };
 
-  const filteredProducts = products.filter(product => {
-    if (selectedCategory !== "all" && product.category.toLowerCase() !== selectedCategory.toLowerCase()) {
-      return false;
-    }
-    if (searchTerm && !product.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return false;
-    }
-    return true;
-  });
+  const filteredProducts = products;
 
   return (
     <div className="min-h-screen bg-white">
