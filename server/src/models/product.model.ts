@@ -34,6 +34,11 @@ module.exports = (sequelize: Sequelize) => {
     discount?: number;
 
     static associate(models: any) {
+      // New associations
+      Product.hasMany(models.OrderItem, { foreignKey: 'productId', as: 'orderItems' });
+      Product.hasMany(models.CartItem, { foreignKey: 'productId', as: 'cartItems' });
+      Product.hasMany(models.Favorite, { foreignKey: 'productId', as: 'favoritedBy' });
+
       Product.belongsTo(models.User, { foreignKey: 'ownerId', targetKey: 'id', onDelete: 'CASCADE' });
       Product.belongsTo(models.Category, { foreignKey: 'categoryId', targetKey: 'id', onDelete: 'CASCADE' });
       Product.belongsTo(models.SubCategory, { foreignKey: 'subcategoryId', targetKey: 'id', onDelete: 'CASCADE' });
