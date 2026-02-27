@@ -166,72 +166,6 @@ export const toggleUserStatus = async (
   }
 };
 
-// Get recent activity
-export const getRecentActivity = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
-  try {
-    const { limit = 10 } = req.query;
-    const activities = await adminService.getRecentActivity(parseInt(limit as string));
-
-    res.status(200).json({
-      success: true,
-      data: activities
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// Get sales report
-export const getSalesReport = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
-  try {
-    const {
-      startDate,
-      endDate,
-      period = "30d"
-    } = req.query;
-
-    const report = await adminService.getSalesReport(
-      startDate as string,
-      endDate as string,
-      period as string
-    );
-
-    res.status(200).json({
-      success: true,
-      data: report
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// Get top products
-export const getTopProducts = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
-  try {
-    const { limit = 10 } = req.query;
-    const products = await adminService.getTopProducts(parseInt(limit as string));
-
-    res.status(200).json({
-      success: true,
-      data: products
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
 export default {
   getDashboardStats,
   getUsers,
@@ -239,7 +173,4 @@ export default {
   updateUserRole,
   deleteUser,
   toggleUserStatus,
-  getRecentActivity,
-  getSalesReport,
-  getTopProducts
 };

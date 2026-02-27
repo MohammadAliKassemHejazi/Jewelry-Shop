@@ -43,6 +43,7 @@
 {"level":"info","message":"::1 - - [16/Sep/2025:20:47:54 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 728 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","timestamp":"2025-09-16 22:47:54"}
 {"level":"info","message":"::1 - - [16/Sep/2025:20:48:24 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 728 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","timestamp":"2025-09-16 22:48:24"}
 {"level":"info","message":"::1 - - [16/Sep/2025:20:48:24 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 728 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","timestamp":"2025-09-16 22:48:24"}
+<<<<<<< HEAD
 {"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-01-04 14:11:28"}
 {"level":"info","message":"::1 - - [04/Jan/2026:13:13:35 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 728 \"http://localhost:3002/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\"","timestamp":"2026-01-04 14:13:35"}
 {"level":"info","message":"::1 - - [04/Jan/2026:13:13:36 +0000] \"GET /api/auth/session HTTP/1.1\" 404 - \"http://localhost:3002/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36\"","timestamp":"2026-01-04 14:13:36"}
@@ -67,3 +68,21 @@
 {"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-02-27 22:21:21"}
 {"level":"info","message":"Received SIGINT. Starting graceful shutdown...","timestamp":"2026-02-27 22:21:27"}
 {"level":"info","message":"Database connection closed.","timestamp":"2026-02-27 22:21:27"}
+=======
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:29:03"}
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:30:06"}
+{"level":"info","message":"::1 - - [27/Feb/2026:20:30:49 +0000] \"GET /health HTTP/1.1\" 200 127 \"-\" \"curl/8.5.0\"","timestamp":"2026-02-27 20:30:49"}
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:34:30"}
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:34:59"}
+{"level":"info","message":"Received SIGTERM. Starting graceful shutdown...","timestamp":"2026-02-27 20:35:30"}
+{"level":"info","message":"Database connection closed.","timestamp":"2026-02-27 20:35:30"}
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:35:38"}
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:37:24"}
+{"level":"info","message":"Received SIGTERM. Starting graceful shutdown...","timestamp":"2026-02-27 20:37:58"}
+{"level":"info","message":"Database connection closed.","timestamp":"2026-02-27 20:37:58"}
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:38:05"}
+{"level":"info","message":"Received SIGTERM. Starting graceful shutdown...","timestamp":"2026-02-27 20:40:00"}
+{"level":"info","message":"Database connection closed.","timestamp":"2026-02-27 20:40:00"}
+{"level":"info","message":"🚀 Server running on port 3000 in development mode","timestamp":"2026-02-27 20:40:07"}
+{"level":"info","message":"::1 - - [27/Feb/2026:20:40:45 +0000] \"GET /health HTTP/1.1\" 200 127 \"-\" \"curl/8.5.0\"","timestamp":"2026-02-27 20:40:45"}
+>>>>>>> c89586bd6ee65fe56f9d6000e528d1d2f13d67fe

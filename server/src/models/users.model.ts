@@ -18,14 +18,6 @@ module.exports = (sequelize: any) => {
     static associate(models: any) {
       // One-to-one relations
       User.hasOne(models.RoleUser, { foreignKey: "userId" });
-      User.hasOne(models.Package, { foreignKey: "userId" });
-      User.hasOne(models.Cart, { foreignKey: "userId" });
-      User.hasOne(models.Favorite, { foreignKey: "userId" });
-
-      // One-to-many relations
-      User.hasMany(models.Store, { foreignKey: "userId", onDelete: "CASCADE" });
-      User.hasMany(models.Article, { foreignKey: "userId", onDelete: "CASCADE" });
-      User.hasMany(models.Order, { foreignKey: "userId", onDelete: "CASCADE" });
 
       // Self-referential relationship for tracking who created the user
       User.belongsTo(models.User, { foreignKey: "createdById", as: "CreatedBy" });
@@ -75,7 +67,7 @@ module.exports = (sequelize: any) => {
         allowNull: true,
       },
       address: {
-        type: DataTypes.JSONB,
+        type: DataTypes.JSON,
         allowNull: true,
       },
       createdById: {
