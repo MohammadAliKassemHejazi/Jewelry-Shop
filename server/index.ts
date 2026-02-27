@@ -13,16 +13,15 @@ import { fileURLToPath } from 'url';
 
 // Import routes and middlewares
 import { 
-  orderRouter, cartRouter, authRouter, userRouter, articleRouter, 
-  shopRouter, storeRouter, utileRouter, paymentRouter, categoriesRouter, 
-  usersRouter, ordersRouter, permissionsRouter, rolesRouter, 
-  subcategoriesRouter, dashboardRouter, productsRouter, adminRouter, paypalRouter 
+  authRouter, userRouter,
+  shopRouter, categoriesRouter,
+  usersRouter,
+  subcategoriesRouter, productsRouter, adminRouter
 } from './src/routes';
 import { CustomError } from './src/utils/customError';
 import config from './src/config/config';
 import db from './src/models';
 import seedDatabase from './seedDataBase';
-import { storeMiddleWear } from './src/middlewares/store.middleweare';
 import { shopMiddleWare } from './src/middlewares/shop.middleware';
 import { errorHandler, notFoundHandler } from './src/middlewares/error.middleware';
 
@@ -352,7 +351,6 @@ async function createApp(): Promise<Express> {
   // Multer setup
   const upload = createMulterConfig();
   const shopUploadMiddleware = createSmartUploadMiddleware(upload, 'photos', 6);
-  const storeUploadMiddleware = createSmartUploadMiddleware(upload, 'photos', 5);
   
   // Health check endpoint
   app.get('/health', healthCheck);
@@ -371,28 +369,17 @@ async function createApp(): Promise<Express> {
   app.use('/api/auth', authLimiter, authRouter);
   
   // Public routes (less strict rate limiting)
-  app.use('/api/cart', cartRouter);
-  app.use('/api/orders', orderRouter);
-  app.use('/api/payment', paymentRouter);
-  app.use('/api/paypal', paypalRouter);
-  app.use('/api/utile', utileRouter);
   app.use('/api/users', userRouter);
-  app.use('/api/articles', articleRouter);
   app.use('/api/categories', categoriesRouter);
   app.use('/api/products', productsRouter);
+  app.use('/api/admin/subcategories', subcategoriesRouter);
   
   // Admin routes (could add admin middleware here)
   app.use('/api/admin', adminRouter);
   app.use('/api/admin/users', usersRouter);
-  app.use('/api/admin/orders', ordersRouter);
-  app.use('/api/admin/permissions', permissionsRouter);
-  app.use('/api/admin/roles', rolesRouter);
-  app.use('/api/admin/subcategories', subcategoriesRouter);
-  app.use('/api/admin/inventory', dashboardRouter);
   
   // Routes with file upload capabilities
   app.use('/api/shop', shopUploadMiddleware, shopMiddleWare, shopRouter);
-  app.use('/api/store', storeUploadMiddleware, storeMiddleWear, storeRouter);
   
   // 404 handler
   app.use('*', notFoundHandler);

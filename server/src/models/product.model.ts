@@ -37,13 +37,8 @@ module.exports = (sequelize: Sequelize) => {
       Product.belongsTo(models.User, { foreignKey: 'ownerId', targetKey: 'id', onDelete: 'CASCADE' });
       Product.belongsTo(models.Category, { foreignKey: 'categoryId', targetKey: 'id', onDelete: 'CASCADE' });
       Product.belongsTo(models.SubCategory, { foreignKey: 'subcategoryId', targetKey: 'id', onDelete: 'CASCADE' });
-      Product.belongsTo(models.Store, { foreignKey: 'storeId', targetKey: 'id', onDelete: 'CASCADE' });
 
       Product.hasMany(models.ProductImage, { foreignKey: 'productId', onDelete: 'CASCADE' });
-      Product.hasMany(models.CartItem, { foreignKey: 'productId', onDelete: 'CASCADE' });
-      Product.hasMany(models.Favorite, { foreignKey: 'productId', onDelete: 'CASCADE' });
-      Product.hasMany(models.OrderItem, { foreignKey: 'productId'});
-      Product.hasMany(models.Comment, { foreignKey: 'productId', onDelete: 'CASCADE' });
       Product.hasMany(models.SizeItem, { foreignKey: 'productId', onDelete: 'CASCADE' });
     }
   }
@@ -77,7 +72,7 @@ module.exports = (sequelize: Sequelize) => {
       allowNull: true,
     },
     images: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.JSON,
       allowNull: true,
     },
     sku: {
@@ -90,15 +85,15 @@ module.exports = (sequelize: Sequelize) => {
       allowNull: true,
     },
     dimensions: {
-      type: DataTypes.JSONB,
+      type: DataTypes.JSON,
       allowNull: true,
     },
     materials: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.JSON,
       allowNull: true,
     },
     gemstones: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.JSON,
       allowNull: true,
     },
     featured: {
@@ -143,11 +138,6 @@ module.exports = (sequelize: Sequelize) => {
       type: DataTypes.UUID,
       allowNull: true,
       field: 'subcategoryId',  // Explicit field name
-    },
-    storeId: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      field: 'storeId',  // Explicit field name
     },
     metaTitle: {
       type: DataTypes.STRING,

@@ -28,9 +28,4 @@ router.put('/users/:id/role', validateUserId, validateUserRoleUpdate, adminContr
 router.delete('/users/:id', validateUserId, adminController.deleteUser);
 router.patch('/users/:id/toggle-status', validateUserId, adminController.toggleUserStatus);
 
-// Analytics routes
-router.get('/activity', adminController.getRecentActivity);
-router.get('/sales-report', adminController.getSalesReport);
-router.get('/top-products', adminController.getTopProducts);
-
 export default router;

@@ -2,4 +2,6 @@ node_modules
 compressed
 uploads
 .env
-dist
+distserver/server.log
+server/logs/*
+server/dist

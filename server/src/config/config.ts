@@ -14,12 +14,12 @@ const config = {
     environment: process.env.PAYPAL_ENVIRONMENT || 'sandbox'
   },
   database: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE_DEVELOPMENT,
-    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME || 'sqlite',
+    password: process.env.DB_PASSWORD || 'sqlite',
+    database: process.env.DB_DATABASE_DEVELOPMENT || 'database.sqlite',
+    host: process.env.DB_HOST || 'localhost',
     port: process.env.DB_PORT || 5432,
-    dialect: 'postgres',
+    dialect: 'sqlite',
     dialectOptions: process.env.NODE_ENV === 'production' ? {
       ssl: {
         require: true,
@@ -27,9 +27,9 @@ const config = {
       }
     } : {},
     logging: false,
-    dbDevelopment: process.env.DB_DATABASE_DEVELOPMENT,
-    dbProduction: process.env.DB_DATABASE_PRODUCTION,
-    dbTest: process.env.DB_DATABASE_TEST,
+    dbDevelopment: process.env.DB_DATABASE_DEVELOPMENT || 'database.sqlite',
+    dbProduction: process.env.DB_DATABASE_PRODUCTION || 'database.sqlite',
+    dbTest: process.env.DB_DATABASE_TEST || 'database.sqlite',
   },
 };
 
