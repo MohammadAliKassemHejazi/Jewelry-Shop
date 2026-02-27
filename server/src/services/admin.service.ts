@@ -22,40 +22,18 @@ export class AdminService {
   // Get dashboard statistics
   async getDashboardStats(period: string = "30d"): Promise<any> {
     try {
-      const dateFilter = this.getDateFilter(period);
       
       const [
-        totalOrders,
-        totalRevenue,
         totalProducts,
         totalCustomers,
-        pendingOrders,
-        lowStockProducts,
-        recentOrders,
-        topProducts
       ] = await Promise.all([
-        db.Order.count({ where: dateFilter }),
-        this.getTotalRevenue(dateFilter),
         db.Product.count({ where: { isActive: true } }),
         db.User.count({ where: { role: 'user' } }),
-        db.Order.count({ where: { ...dateFilter, status: 'pending' } }),
-        db.Product.count({ where: { isActive: true, stock: { [Op.lt]: 10 } } }),
-        this.getRecentOrders(5),
-        this.getTopProducts(5)
       ]);
 
-      const monthlyRevenue = await this.getMonthlyRevenue(period);
-
       return {
-        totalOrders,
-        totalRevenue,
         totalProducts,
         totalCustomers,
-        pendingOrders,
-        lowStockProducts,
-        recentOrders,
-        topProducts,
-        monthlyRevenue
       };
     } catch (error) {
       throw new CustomError("Failed to fetch dashboard statistics", "FETCH_DASHBOARD_STATS_ERROR", 500, { error: error instanceof Error ? error.message : String(error) });
@@ -112,15 +90,7 @@ export class AdminService {
   async getUserById(id: string): Promise<any> {
     try {
       const user = await db.User.findByPk(id, {
-        attributes: { exclude: ['password'] },
-        include: [
-          {
-            model: db.Order,
-            as: 'orders',
-            limit: 5,
-            order: [['createdAt', 'DESC']]
-          }
-        ]
+        attributes: { exclude: ['password'] }
       });
 
       return user;
@@ -185,93 +155,6 @@ export class AdminService {
         throw error;
       }
       throw new CustomError("Failed to toggle user status", "TOGGLE_USER_STATUS_ERROR", 500, { error: error instanceof Error ? error.message : String(error) });
-    }
-  }
-
-  // Get recent activity
-  async getRecentActivity(limit: number = 10): Promise<any[]> {
-    try {
-      const activities = await db.Log.findAll({
-        order: [['createdAt', 'DESC']],
-        limit
-      });
-
-      return activities;
-    } catch (error) {
-      throw new CustomError("Failed to fetch recent activity", "FETCH_RECENT_ACTIVITY_ERROR", 500, { error: error instanceof Error ? error.message : String(error) });
-    }
-  }
-
-  // Get sales report
-  async getSalesReport(startDate?: string, endDate?: string, period: string = "30d"): Promise<any> {
-    try {
-      const dateFilter = startDate && endDate 
-        ? { createdAt: { [Op.between]: [new Date(startDate), new Date(endDate)] } }
-        : this.getDateFilter(period);
-
-      const orders = await db.Order.findAll({
-        where: dateFilter,
-        include: [
-          {
-            model: db.OrderItem,
-            as: 'items',
-            include: [
-              {
-                model: db.Product,
-                as: 'product',
-                attributes: ['id', 'name', 'price']
-              }
-            ]
-          }
-        ],
-        order: [['createdAt', 'DESC']]
-      });
-
-      const totalRevenue = orders.reduce((sum: number, order: any) => sum + order.total, 0);
-      const totalOrders = orders.length;
-      const averageOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
-
-      return {
-        totalRevenue,
-        totalOrders,
-        averageOrderValue,
-        orders
-      };
-    } catch (error) {
-      throw new CustomError("Failed to fetch sales report", "FETCH_SALES_REPORT_ERROR", 500, { error: error instanceof Error ? error.message : String(error) });
-    }
-  }
-
-  // Get top products
-  async getTopProducts(limit: number = 10): Promise<any[]> {
-    try {
-      const products = await db.Product.findAll({
-        where: { isActive: true },
-        include: [
-          {
-            model: db.OrderItem,
-            as: 'orderItems',
-            attributes: [],
-            required: false
-          }
-        ],
-        attributes: [
-          'id',
-          'name',
-          'price',
-          'stock',
-          'rating',
-          'reviewCount',
-          [db.sequelize.fn('COUNT', db.sequelize.col('orderItems.id')), 'salesCount']
-        ],
-        group: ['Product.id'],
-        order: [[db.sequelize.literal('salesCount'), 'DESC']],
-        limit
-      });
-
-      return products;
-    } catch (error) {
-      throw new CustomError("Failed to fetch top products", "FETCH_TOP_PRODUCTS_ERROR", 500, { error: error instanceof Error ? error.message : String(error) });
     }
   }
 
