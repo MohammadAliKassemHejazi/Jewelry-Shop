@@ -14,22 +14,23 @@ const config = {
     environment: process.env.PAYPAL_ENVIRONMENT || 'sandbox'
   },
   database: {
-    username: process.env.DB_USERNAME || 'postgres',
-    password: process.env.DB_PASSWORD || 'postgres',
-    database: process.env.DB_DATABASE_DEVELOPMENT || 'database.postgres',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE_DEVELOPMENT || 'database',
     host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 5432,
-    dialect: 'postgres',
-    dialectOptions: process.env.NODE_ENV === 'production' ? {
+    port: process.env.DB_PORT,
+    dialect: process.env.DB_DIALECT || 'sqlite',
+    storage: process.env.DB_STORAGE || './database.sqlite',
+    dialectOptions: process.env.NODE_ENV === 'production' && process.env.DB_DIALECT === 'postgres' ? {
       ssl: {
         require: true,
         rejectUnauthorized: false
       }
     } : {},
     logging: false,
-    dbDevelopment: process.env.DB_DATABASE_DEVELOPMENT || 'database.postgres',
-    dbProduction: process.env.DB_DATABASE_PRODUCTION || 'database.postgres',
-    dbTest: process.env.DB_DATABASE_TEST || 'database.postgres',
+    dbDevelopment: process.env.DB_DATABASE_DEVELOPMENT || 'database',
+    dbProduction: process.env.DB_DATABASE_PRODUCTION || 'database',
+    dbTest: process.env.DB_DATABASE_TEST || 'database',
   },
 };
 

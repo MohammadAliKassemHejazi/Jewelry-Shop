@@ -1,0 +1,22 @@
+
+> Jewelry-Shop@1.0.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+ ⚠ Port 3001 is in use, trying 3002 instead.
+ ⚠ Port 3002 is in use, trying 3003 instead.
+  ▲ Next.js 15.0.0
+  - Local:        http://localhost:3003
+  - Environments: .env
+  - Experiments (use with caution):
+    · forceSwcTransforms
+
+ ✓ Starting...
+ ✓ Ready in 1948ms
+ ○ Compiling / ...
+Browserslist: browsers data (caniuse-lite) is 16 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ✓ Compiled / in 9.5s (1101 modules)
+ GET / 200 in 10481ms
+ ✓ Compiled in 1141ms (497 modules)
