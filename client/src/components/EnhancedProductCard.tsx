@@ -44,13 +44,13 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
   const isFav = isFavorite(product.id);
 
   return (
-    <Card className="group relative overflow-hidden hover:shadow-lg transition-all duration-300">
+    <Card className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 border-transparent hover:border-primary/20 bg-white">
       <Link href={`/product/${product.id}`}>
-        <div className="relative">
+        <div className="relative overflow-hidden bg-gray-50">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
           />
           
           {/* Badges */}
@@ -163,15 +163,15 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
           )}
 
           {/* Action Buttons */}
-          <div className="flex gap-2 pt-2">
+          <div className="flex gap-2 pt-4">
             <Button
               variant="outline"
               size="sm"
-              className="flex-1"
+              className="flex-1 rounded-none uppercase tracking-wider text-xs border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300"
               onClick={handleAddToCart}
               disabled={product.stock === 0}
             >
-              <ShoppingCart className="h-4 w-4 mr-1" />
+              <ShoppingCart className="h-4 w-4 mr-2" />
               Add to Cart
             </Button>
             
@@ -179,9 +179,9 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
               variant="outline"
               size="sm"
               onClick={handleToggleFavorite}
-              className={isFav ? 'text-red-500 border-red-500' : ''}
+              className={`rounded-none border-gray-200 hover:border-primary transition-all duration-300 ${isFav ? 'text-primary border-primary' : 'text-gray-400 hover:text-primary'}`}
             >
-              <Heart className={`h-4 w-4 ${isFav ? 'fill-current' : ''}`} />
+              <Heart className={`h-4 w-4 ${isFav ? 'fill-current text-primary' : ''}`} />
             </Button>
           </div>
         </div>
