@@ -1,0 +1,440 @@
+
+> biomimic-dentistry-hub-api@1.0.0 dev
+> nodemon index.ts
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  database: 'database.postgres',
+  use_env_variable: undefined,
+  hasUsername: true,
+  hasPassword: true
+}
+🔗 Connecting to database: database.postgres at localhost:5432
+📁 Loading 20 model files: [
+  'article.model.ts',
+  'cart.model.ts',
+  'cartitem.model.ts',
+  'category.model.ts',
+  'favorite.model.ts',
+  'newsletter.model.ts',
+  'order.model.ts',
+  'orderitem.model.ts',
+  'payment.model.ts',
+  'permission.model.ts',
+  'product.model.ts',
+  'productimage.ts',
+  'role.model.ts',
+  'rolepermission.model.ts',
+  'roleuser.model.ts',
+  'size.model.ts',
+  'sizeitem.model.ts',
+  'subcategory.model.ts',
+  'testimonial.model.ts',
+  'users.model.ts'
+]
+✅ Loaded model: Article
+✅ Loaded model: Cart
+✅ Loaded model: CartItem
+✅ Loaded model: Category
+✅ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+🎉 Database initialization complete. Models loaded: Article, Cart, CartItem, Category, Favorite, Newsletter, Order, OrderItem, Payment, Permission, Product, ProductImage, Role, RolePermission, RoleUser, Size, SizeItem, SubCategory, Testimonial, User
+🔄 Performing database reset in development...
+❌ Unable to connect to the database: ConnectionRefusedError [SequelizeConnection[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'sqlite',
+  host: 'localhost',
+  port: 5432,
+  database: 'database',
+  use_env_variable: undefined,
+  hasUsername: false,
+  hasPassword: false
+}
+❌ Failed to initialize Sequelize: Error: ❌ Missing required database configuration: database name or username
+    at Object.<anonymous> (/app/server/src/models/index.ts:146:13)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Module.m._compile (/app/server/node_modules/ts-node/src/index.ts:1618:23)
+    at node:internal/modules/cjs/loader:1839:10
+    at Object.require.extensions.<computed> [as .ts] (/app/server/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+/app/server/src/models/index.ts:146
+      throw new Error("❌ Missing required database configuration: database name or username");
+            ^
+Error: ❌ Missing required database configuration: database name or username
+    at Object.<anonymous> (/app/server/src/models/index.ts:146:13)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Module.m._compile (/app/server/node_modules/ts-node/src/index.ts:1618:23)
+    at node:internal/modules/cjs/loader:1839:10
+    at Object.require.extensions.<computed> [as .ts] (/app/server/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'sqlite',
+  host: 'localhost',
+  port: undefined,
+  database: 'database',
+  use_env_variable: undefined,
+  hasUsername: false,
+  hasPassword: false
+}
+❌ Failed to initialize Sequelize: Error: ❌ Missing required database configuration: database name or username
+    at Object.<anonymous> (/app/server/src/models/index.ts:146:13)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Module.m._compile (/app/server/node_modules/ts-node/src/index.ts:1618:23)
+    at node:internal/modules/cjs/loader:1839:10
+    at Object.require.extensions.<computed> [as .ts] (/app/server/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+/app/server/src/models/index.ts:146
+      throw new Error("❌ Missing required database configuration: database name or username");
+            ^
+Error: ❌ Missing required database configuration: database name or username
+    at Object.<anonymous> (/app/server/src/models/index.ts:146:13)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Module.m._compile (/app/server/node_modules/ts-node/src/index.ts:1618:23)
+    at node:internal/modules/cjs/loader:1839:10
+    at Object.require.extensions.<computed> [as .ts] (/app/server/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'sqlite',
+  host: 'localhost',
+  port: undefined,
+  database: 'database',
+  use_env_variable: undefined,
+  hasUsername: false,
+  hasPassword: false
+}
+🔗 Connecting to SQLite database at: ./database.sqlite
+📁 Loading 20 model files: [
+  'article.model.ts',
+  'cart.model.ts',
+  'cartitem.model.ts',
+  'category.model.ts',
+  'favorite.model.ts',
+  'newsletter.model.ts',
+  'order.model.ts',
+  'orderitem.model.ts',
+  'payment.model.ts',
+  'permission.model.ts',
+  'product.model.ts',
+  'productimage.ts',
+  'role.model.ts',
+  'rolepermission.model.ts',
+  'roleuser.model.ts',
+  'size.model.ts',
+  'sizeitem.model.ts',
+  'subcategory.model.ts',
+  'testimonial.model.ts',
+  'users.model.ts'
+]
+✅ Loaded model: Article
+✅ Loaded model: Cart
+✅ Loaded model: CartItem
+✅ Loaded model: Category
+✅ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+🎉 Database initialization complete. Models loaded: Article, Cart, CartItem, Category, Favorite, Newsletter, Order, OrderItem, Payment, Permission, Product, ProductImage, Role, RolePermission, RoleUser, Size, SizeItem, SubCategory, Testimonial, User
+🔄 Performing database reset in development...
+✅ Database connection established successfully.
+✅ Database schema has been reset.
+Existing data cleared.
+(sequelize) Warning: Model "Category" is declaring public class fields for attribute(s): "id", "name", "description".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Categories created.
+(sequelize) Warning: Model "SubCategory" is declaring public class fields for attribute(s): "id", "name".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Subcategories created.
+(sequelize) Warning: Model "Size" is declaring public class fields for attribute(s): "id", "size".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Sizes created.
+Database has been successfully seeded.
+✅ Database seeded successfully.
+✅ uploads directory created: /app/server/uploads
+✅ compressed directory created: /app/server/compressed
+[32minfo[39m: 🚀 Server running on port 5300 in development mode {"timestamp":"2026-02-28 19:09:16"}
+🚀 Server running on http://localhost:5300
+[32minfo[39m: Received SIGTERM. Starting graceful shutdown... {"timestamp":"2026-02-28 19:10:03"}
+[32minfo[39m: Database connection closed. {"timestamp":"2026-02-28 19:10:03"}
+[32minfo[39m: Graceful shutdown completed. {"timestamp":"2026-02-28 19:10:03"}
+[32m[nodemon] clean exit - waiting for changes before restart[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'sqlite',
+  host: 'localhost',
+  port: undefined,
+  database: 'database',
+  use_env_variable: undefined,
+  hasUsername: false,
+  hasPassword: false
+}
+🔗 Connecting to SQLite database at: ./database.sqlite
+📁 Loading 20 model files: [
+  'article.model.ts',
+  'cart.model.ts',
+  'cartitem.model.ts',
+  'category.model.ts',
+  'favorite.model.ts',
+  'newsletter.model.ts',
+  'order.model.ts',
+  'orderitem.model.ts',
+  'payment.model.ts',
+  'permission.model.ts',
+  'product.model.ts',
+  'productimage.ts',
+  'role.model.ts',
+  'rolepermission.model.ts',
+  'roleuser.model.ts',
+  'size.model.ts',
+  'sizeitem.model.ts',
+  'subcategory.model.ts',
+  'testimonial.model.ts',
+  'users.model.ts'
+]
+✅ Loaded model: Article
+✅ Loaded model: Cart
+✅ Loaded model: CartItem
+✅ Loaded model: Category
+✅ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+🎉 Database initialization complete. Models loaded: Article, Cart, CartItem, Category, Favorite, Newsletter, Order, OrderItem, Payment, Permission, Product, ProductImage, Role, RolePermission, RoleUser, Size, SizeItem, SubCategory, Testimonial, User
+🔄 Performing database reset in development...
+✅ Database connection established successfully.
+✅ Database schema has been reset.
+Existing data cleared.
+(sequelize) Warning: Model "Category" is declaring public class fields for attribute(s): "id", "name", "description".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Categories created.
+(sequelize) Warning: Model "SubCategory" is declaring public class fields for attribute(s): "id", "name".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Subcategories created.
+(sequelize) Warning: Model "Size" is declaring public class fields for attribute(s): "id", "size".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Sizes created.
+Database has been successfully seeded.
+✅ Database seeded successfully.
+Uncaught Exception: Error: listen EADDRINUSE: address already in use :::5300
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at Function.listen (/app/server/node_modules/express/lib/application.js:635:24)
+    at startServer (/app/server/index.ts:454:24) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5300
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+ductimage.ts',
+  'role.model.ts',
+  'rolepermission.model.ts',
+  'roleuser.model.ts',
+  'size.model.ts',
+  'sizeitem.model.ts',
+  'subcategory.model.ts',
+  'testimonial.model.ts',
+  'users.model.ts'
+]
+✅ Loaded model: Article
+✅ Loaded model: Cart
+✅ Loaded model: CartItem
+✅ Loaded model: Category
+✅ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+🎉 Database initialization complete. Models loaded: Article, Cart, CartItem, Category, Favorite, Newsletter, Order, OrderItem, Payment, Permission, Product, ProductImage, Role, RolePermission, RoleUser, Size, SizeItem, SubCategory, Testimonial, User
+🔄 Performing database reset in development...
+✅ Database connection established successfully.
+✅ Database schema has been reset.
+Existing data cleared.
+(sequelize) Warning: Model "Category" is declaring public class fields for attribute(s): "id", "name", "description".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Categories created.
+(sequelize) Warning: Model "SubCategory" is declaring public class fields for attribute(s): "id", "name".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Subcategories created.
+(sequelize) Warning: Model "Size" is declaring public class fields for attribute(s): "id", "size".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Sizes created.
+Database has been successfully seeded.
+✅ Database seeded successfully.
+[32minfo[39m: 🚀 Server running on port 5300 in development mode {"timestamp":"2026-02-28 19:11:09"}
+🚀 Server running on http://localhost:5300
