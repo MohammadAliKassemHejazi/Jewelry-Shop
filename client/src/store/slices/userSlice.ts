@@ -30,7 +30,7 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async (credentials: { email: string; password: string }, { rejectWithValue }) => {
     try {
-      const response = await httpClient.post("/api/auth/signin", credentials);
+      const response = await httpClient.post("/api/auth/login", credentials);
       return response.data;
     } catch (error: unknown) {
       const errorMessage = (error as any)?.response?.data?.message || "Login failed";
@@ -62,7 +62,7 @@ export const getSession = createAsyncThunk(
   "user/getSession",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await httpClient.get("/api/auth/session");
+      const response = await httpClient.get("/api/auth/isauthenticated");
       return response.data;
     } catch (error: unknown) {
       const errorMessage = (error as any)?.response?.data?.message || "Session check failed";
