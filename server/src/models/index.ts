@@ -142,23 +142,32 @@ try {
     console.log(`🔗 Connecting using environment variable: ${config.use_env_variable}`);
     sequelize = new Sequelize(envVar, config);
   } else {
-    if (!config.database || !config.username) {
-      throw new Error("❌ Missing required database configuration: database name or username");
-    }
-    console.log(`🔗 Connecting to database: ${config.database} at ${config.host}:${config.port}`);
-    sequelize = new Sequelize(
-      config.database, // Database name
-      config.username, // Database username
-      config.password, // Database password
-      {
-        host: config.host, // Database host
-        port: config.port, // Database port
-        dialect: config.dialect, // Database dialect (e.g., 'postgres')
-        dialectOptions: config.dialectOptions, // SSL/TLS options
-        logging: config.logging, // Enable/disable logging
-        pool: config.pool // Connection pool settings
+    if (config.dialect === 'sqlite') {
+      console.log(`🔗 Connecting to SQLite database at: ${config.storage}`);
+      sequelize = new Sequelize({
+        dialect: 'sqlite',
+        storage: config.storage || './database.sqlite',
+        logging: config.logging,
+      });
+    } else {
+      if (!config.database || !config.username) {
+        throw new Error("❌ Missing required database configuration: database name or username");
       }
-    );
+      console.log(`🔗 Connecting to database: ${config.database} at ${config.host}:${config.port}`);
+      sequelize = new Sequelize(
+        config.database, // Database name
+        config.username, // Database username
+        config.password, // Database password
+        {
+          host: config.host, // Database host
+          port: config.port, // Database port
+          dialect: config.dialect, // Database dialect (e.g., 'postgres')
+          dialectOptions: config.dialectOptions, // SSL/TLS options
+          logging: config.logging, // Enable/disable logging
+          pool: config.pool // Connection pool settings
+        }
+      );
+    }
   }
 } catch (error) {
   console.error("❌ Failed to initialize Sequelize:", error);

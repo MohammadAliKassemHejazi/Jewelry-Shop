@@ -7,8 +7,9 @@ module.exports = {
     password: config.database.password,
     database: config.database.dbDevelopment,
     host: config.database.host,
-    port: config.database.port || 5432, // Include port if needed
+    port: config.database.port, // Include port if needed
     dialect: config.database.dialect,
+    storage: config.database.storage,
     dialectOptions: config.database.dialectOptions, // Add SSL/TLS options
     logging: false, // Disable logging if not needed
   },
