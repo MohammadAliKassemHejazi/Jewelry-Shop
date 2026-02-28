@@ -16,6 +16,12 @@ module.exports = (sequelize: any) => {
     address!: any;
     createdById?: string; // Optional field to track who created the user
     static associate(models: any) {
+      // New associations
+      User.hasMany(models.Order, { foreignKey: 'userId', as: 'orders' });
+      User.hasOne(models.Cart, { foreignKey: 'userId', as: 'cart' });
+      User.hasMany(models.Article, { foreignKey: 'authorId', as: 'articles' });
+      User.hasMany(models.Favorite, { foreignKey: 'userId', as: 'favorites' });
+
       // One-to-one relations
       User.hasOne(models.RoleUser, { foreignKey: "userId" });
 

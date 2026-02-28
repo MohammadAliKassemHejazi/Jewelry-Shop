@@ -12,12 +12,25 @@ import multer, { FileFilterCallback } from 'multer';
 import { fileURLToPath } from 'url';
 
 // Import routes and middlewares
+
 import { 
-  authRouter, userRouter,
-  shopRouter, categoriesRouter,
+  authRouter,
+  categoriesRouter,
+  productsRouter,
+  subcategoriesRouter,
+  adminRouter,
+  userRouter,
   usersRouter,
-  subcategoriesRouter, productsRouter, adminRouter
+  shopRouter,
+  orderRouter,
+  cartRouter,
+  paymentRouter,
+  articleRouter,
+  testimonialRouter,
+  newsletterRouter,
+  favoriteRouter
 } from './src/routes';
+
 import { CustomError } from './src/utils/customError';
 import config from './src/config/config';
 import db from './src/models';
@@ -380,6 +393,19 @@ async function createApp(): Promise<Express> {
   
   // Routes with file upload capabilities
   app.use('/api/shop', shopUploadMiddleware, shopMiddleWare, shopRouter);
+  // E-commerce routes
+  app.use('/api/orders', orderRouter);
+  app.use('/api/cart', cartRouter);
+  app.use('/api/payments', paymentRouter);
+
+  // Content routes
+  app.use('/api/articles', articleRouter);
+  app.use('/api/testimonials', testimonialRouter);
+  app.use('/api/newsletter', newsletterRouter);
+
+  // User features
+  app.use('/api/favorites', favoriteRouter);
+
   
   // 404 handler
   app.use('*', notFoundHandler);
