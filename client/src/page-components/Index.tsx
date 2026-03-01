@@ -107,10 +107,10 @@ const Index = () => {
             Discover our curated collection of timeless pieces that celebrate your unique style and beauty
           </p>
           <div className="space-x-4 opacity-0 animate-fade-in" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
-            <Button asChild size="lg" className="bg-primary hover:bg-primary-dark text-white font-poppins transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary-dark text-white font-poppins tracking-wider uppercase text-sm transform hover:scale-105 transition-all duration-300 hover:shadow-xl rounded-none px-8 py-6">
               <Link href="/shop">Shop Collection</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gray-900 font-poppins transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gray-900 font-poppins tracking-wider uppercase text-sm transform hover:scale-105 transition-all duration-300 hover:shadow-xl rounded-none px-8 py-6">
               <Link href="/about">Our Story</Link>
             </Button>
           </div>
@@ -156,9 +156,9 @@ const Index = () => {
             </div>
           )}
           
-          <AnimatedSection className="text-center mt-12" delay={600}>
-            <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white font-poppins transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-              <Link href="/shop">View All Products</Link>
+          <AnimatedSection className="text-center mt-16" delay={600}>
+            <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white font-poppins tracking-wider uppercase text-sm transform hover:scale-105 transition-all duration-300 hover:shadow-lg rounded-none px-10 py-6">
+              <Link href="/shop">Discover Collection</Link>
             </Button>
           </AnimatedSection>
         </div>
@@ -233,7 +233,7 @@ const Index = () => {
               <Button 
                 type="submit"
                 disabled={newsletterLoading}
-                className="bg-white text-primary hover:bg-gray-100 font-poppins px-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg disabled:opacity-50"
+                className="bg-white text-primary hover:bg-gray-100 font-poppins px-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg disabled:opacity-50 rounded-none tracking-wide uppercase text-sm"
               >
                 {newsletterLoading ? 'Subscribing...' : 'Subscribe'}
               </Button>
