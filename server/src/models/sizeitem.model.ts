@@ -6,6 +6,8 @@ import { ISizeItemAttributes } from "../interfaces/types/models/sizeitem.model.t
 module.exports = (sequelize: Sequelize) => {
   class SizeItem extends Model<ISizeItemAttributes> implements ISizeItemAttributes {
     id!: string;
+    productId!: string;
+    sizeId!: string;
     quantity!: number;
 
     static associate(models: any) {
