@@ -27,6 +27,9 @@ module.exports = (sequelize: Sequelize) => {
     rating?: number;
     reviewCount?: number;
     isActive?: boolean;
+    ownerId!: string;
+    categoryId!: string;
+    subcategoryId?: string;
     metaTitle?: string;
     metaDescription?: string;
     slug?: string;
@@ -131,12 +134,12 @@ module.exports = (sequelize: Sequelize) => {
     },
     ownerId: {
       type: DataTypes.UUID,
-      allowNull: false,
+      allowNull: true,
       field: 'ownerId',  // Explicit field name
     },
     categoryId: {
       type: DataTypes.UUID,
-      allowNull: false,
+      allowNull: true,
       field: 'categoryId',  // Explicit field name
     },
     subcategoryId: {

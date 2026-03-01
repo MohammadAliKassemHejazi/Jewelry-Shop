@@ -7,7 +7,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
   class SubCategory extends Model<ISubCategoryAttributes> implements ISubCategoryAttributes {
     id!: string;
-
+    categoryId!: string;
     name!: string;
 
     static associate(models: any) {
@@ -21,6 +21,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+    },
+    categoryId: {
+      type: DataTypes.UUID,
+      allowNull: true,
     },
     name: {
       type: DataTypes.STRING,
