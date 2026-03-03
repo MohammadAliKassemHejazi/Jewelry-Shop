@@ -158,3 +158,8 @@
 {"level":"info","message":"Received SIGTERM. Starting graceful shutdown...","timestamp":"2026-03-01 02:52:05"}
 {"level":"info","message":"Database connection closed.","timestamp":"2026-03-01 02:52:05"}
 {"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-03-01 02:52:17"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-03-03 22:38:25"}
+{"level":"info","message":"::1 - - [03/Mar/2026:22:38:36 +0000] \"POST /api/auth/login HTTP/1.1\" 500 75 \"-\" \"curl/8.5.0\"","timestamp":"2026-03-03 22:38:36"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-03-03 22:39:43"}
+{"level":"info","message":"::1 - - [03/Mar/2026:22:39:46 +0000] \"POST /api/auth/login HTTP/1.1\" 200 371 \"-\" \"curl/8.5.0\"","timestamp":"2026-03-03 22:39:46"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-03-03 22:40:43"}

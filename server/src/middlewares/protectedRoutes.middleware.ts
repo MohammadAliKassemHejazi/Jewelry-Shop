@@ -17,7 +17,17 @@ export const protectedRoutes = (router: Router, routesToProtect: string[]): void
       });
 
       if (isProtected) {
-        await verifyToken(req); // Perform token validation for protected routes
+        // Special case for /api/auth/isauthenticated to not crash but return success: false
+        if (requestPath === '/isauthenticated') {
+          try {
+            await verifyToken(req);
+          } catch (err) {
+            res.json({ success: false, user: null, message: "Not authenticated" });
+            return;
+          }
+        } else {
+          await verifyToken(req); // Perform token validation for protected routes
+        }
       }
 
       next();

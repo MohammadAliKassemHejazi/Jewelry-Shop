@@ -13,9 +13,17 @@ export const handleLogin = async (request: IAuthLoginBodyRequest, response: Resp
   const { email, password } = request.body;
   try {
     const login = await userService.userLogin(email, password);
-    response.json(login);
-  } catch (error) {
-    next(authErrors.AuthInvalidEmail);
+    // Set cookie
+    response.cookie("accessToken", login.accessToken, {
+      maxAge: 3600 * 30 * 1000,
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      sameSite: "lax",
+    });
+    response.json({ success: true, user: login, message: "Login successful" });
+  } catch (error: any) {
+    next(error);
   }
 };
 
@@ -26,7 +34,7 @@ export const handleRegister = async (
 ): Promise<void> => {
   const { email, password, name, surname, address, phone } = request.body;
   try {
-    const user: IUserAttributes = await userService.createUser({
+    await userService.createUser({
       email,
       password,
       name,
@@ -34,9 +42,18 @@ export const handleRegister = async (
       address,
       phone,
     });
-    response.status(201).json(user);
-  } catch (error) {
-    next(authErrors.AuthRegisterFailure);
+    // Auto login after register
+    const login = await userService.userLogin(email, password);
+    response.cookie("accessToken", login.accessToken, {
+      maxAge: 3600 * 30 * 1000,
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      sameSite: "lax",
+    });
+    response.status(201).json({ success: true, user: login, message: "Registration successful" });
+  } catch (error: any) {
+    next(error);
   }
 };
 
@@ -45,12 +62,16 @@ export const isAuthenticated = async (
   response: Response,
   next:any,
 ): Promise<void> => {
-  try{
-  const UserId = request.UserId; // Assuming UserId is accessible via middleware
-  const userSession = await userService.userSession(UserId!);
-  response.json(userSession);
-  }catch(e){
-    next(e)
+  try {
+    const UserId = request.UserId; // Accessible via middleware
+    if (!UserId) {
+      response.json({ success: false, user: null, message: "Not authenticated" });
+      return;
+    }
+    const userSession = await userService.userSession(UserId);
+    response.json({ success: true, user: userSession });
+  } catch(e) {
+    response.json({ success: false, user: null, message: "Session expired" });
   }
 };
 
@@ -58,8 +79,8 @@ export const loggedOut = async (
   request: CustomRequest,
   response: Response
 ): Promise<void> => {
-  const UserId = request.UserId; // Assuming UserId is accessible via middleware
-  response.json(UserId);
+  response.clearCookie("accessToken", { path: "/" });
+  response.json({ success: true, message: "Logged out successfully" });
 };
 
 export default {

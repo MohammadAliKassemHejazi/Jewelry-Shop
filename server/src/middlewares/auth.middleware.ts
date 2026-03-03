@@ -6,11 +6,21 @@ import { ITokenDecoded } from "../interfaces/types/middlewares/auth.middleware.t
 import authErrors from "../utils/errors/auth.errors";
 import { CustomRequest } from '../interfaces/types/middlewares/request.middleware.types';
 export const validateHeadersAuth = (req: Request): string => {
+  let accessToken: string | undefined;
+
   const header: string | undefined = req.headers.authorization;
-  if (!header) {
-    throw customError(authErrors.AuthMissingHeaders);
+  if (header && header.startsWith("Bearer ")) {
+    accessToken = header.split(" ")[1];
   }
-  const accessToken: string = header.split(" ")[1];
+
+  if (!accessToken && req.headers.cookie) {
+    const cookies = req.headers.cookie.split("; ");
+    const tokenCookie = cookies.find((row) => row.startsWith("accessToken="));
+    if (tokenCookie) {
+      accessToken = tokenCookie.split("=")[1];
+    }
+  }
+
   if (!accessToken) {
     throw customError(authErrors.AuthMissingHeaders);
   }
