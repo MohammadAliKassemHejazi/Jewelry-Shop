@@ -126,6 +126,36 @@ export const mockProducts: Product[] = [
   }
 ];
 
+export const mockTestimonials = [
+  {
+    id: "t1",
+    name: "Eleanor Vance",
+    text: "The rose gold engagement ring I received is absolutely breathtaking. The craftsmanship is superb and the diamond shines brilliantly. Truly a piece of art.",
+    rating: 5,
+    location: "New York, NY",
+    verified: true,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "t2",
+    name: "Sarah Jenkins",
+    text: "I purchased a pearl necklace for my mother's anniversary and it exceeded all expectations. Elegant packaging and outstanding customer service.",
+    rating: 5,
+    location: "London, UK",
+    verified: true,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "t3",
+    name: "Michael Chen",
+    text: "Bought a pair of diamond stud earrings. The online experience was seamless, and the jewelry arrived securely and exactly as described.",
+    rating: 4,
+    location: "San Francisco, CA",
+    verified: true,
+    createdAt: new Date().toISOString()
+  }
+];
+
 export const mockCategories: Category[] = [
   {
     id: '1',

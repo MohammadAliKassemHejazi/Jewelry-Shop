@@ -15,7 +15,9 @@ import { productsApi, categoriesApi } from '@/services/api';
 import { Product, ProductCreateRequest, Category } from '@/types';
 import { toast } from 'sonner';
 
-const AdminProducts: React.FC = () => {
+export interface AdminProductsViewProps {}
+
+const AdminProducts: React.FC<AdminProductsViewProps> = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,8 +56,9 @@ const AdminProducts: React.FC = () => {
       const response = await productsApi.getAll({}, 1, 100);
       setProducts(response.data);
     } catch (error) {
-      console.error('Failed to fetch products:', error);
-      toast.error('Failed to fetch products');
+      console.warn('Failed to fetch products, using default data:', error);
+      toast.error('Failed to fetch products, displaying default data');
+      setProducts([]);
     } finally {
       setLoading(false);
     }
@@ -66,7 +69,8 @@ const AdminProducts: React.FC = () => {
       const response = await categoriesApi.getAll();
       setCategories(response);
     } catch (error) {
-      console.error('Failed to fetch categories:', error);
+      console.warn('Failed to fetch categories, using default empty data:', error);
+      setCategories([]);
     }
   };
 

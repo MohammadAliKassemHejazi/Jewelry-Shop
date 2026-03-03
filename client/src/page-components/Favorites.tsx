@@ -7,7 +7,11 @@ import { useFavorites } from '@/contexts/FavoritesContext';
 import EnhancedProductCard from '@/components/EnhancedProductCard';
 import Link from 'next/link';
 
-const Favorites: React.FC = () => {
+export interface FavoritesViewProps {
+  className?: string;
+}
+
+const Favorites: React.FC<FavoritesViewProps> = () => {
   const { favorites, clearFavorites } = useFavorites();
 
   if (favorites.length === 0) {

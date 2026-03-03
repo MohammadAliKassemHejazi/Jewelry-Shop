@@ -12,7 +12,9 @@ import { ordersApi } from '@/services/api';
 import { Order } from '@/types';
 import { toast } from 'sonner';
 
-const AdminOrders: React.FC = () => {
+export interface AdminOrdersViewProps {}
+
+const AdminOrders: React.FC<AdminOrdersViewProps> = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,8 +32,9 @@ const AdminOrders: React.FC = () => {
       const response = await ordersApi.getAll(1, 100);
       setOrders(response.data);
     } catch (error) {
-      console.error('Failed to fetch orders:', error);
-      toast.error('Failed to fetch orders');
+      console.warn('Failed to fetch orders, using default empty data:', error);
+      toast.error('Failed to fetch orders, displaying default view');
+      setOrders([]);
     } finally {
       setLoading(false);
     }

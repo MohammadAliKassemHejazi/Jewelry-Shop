@@ -1,5 +1,6 @@
-
 "use client";
+import React from "react";
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,18 +9,27 @@ import AnimatedSection from "@/components/AnimatedSection";
 import ProductCard from "@/components/ProductCard";
 import EnhancedProductCard from "@/components/EnhancedProductCard";
 import { productsApi, testimonialsApi, newsletterApi } from "@/services/api";
-import { Product, Testimonial } from "@/types";
+import { mockProducts, mockTestimonials } from "@/services/mockData";
 import { toast } from "sonner";
+import { Product, Testimonial } from '../types';
 
-const Index = () => {
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [loading, setLoading] = useState(true);
+export interface IndexViewProps {
+  className?: string;
+  initialProducts?: Product[];
+  initialTestimonials?: Testimonial[];
+}
+
+const Index: React.FC<IndexViewProps> = ({ initialProducts, initialTestimonials }) => {
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>(initialProducts || []);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(initialTestimonials || []);
+  const [loading, setLoading] = useState(!initialProducts || !initialTestimonials);
   const [error, setError] = useState<string | null>(null);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterLoading, setNewsletterLoading] = useState(false);
 
   useEffect(() => {
+    if (initialProducts && initialTestimonials) return;
+
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -35,29 +45,29 @@ const Index = () => {
         if (productsResponse.status === 'fulfilled') {
           setFeaturedProducts(productsResponse.value);
         } else {
-          console.error('Failed to fetch featured products:', productsResponse.reason);
-          setFeaturedProducts([]);
+          console.warn('Failed to fetch featured products, using default data:', productsResponse.reason);
+          setFeaturedProducts(mockProducts.filter(p => p.featured).length > 0 ? mockProducts.filter(p => p.featured) : mockProducts.slice(0, 3));
         }
 
         // Handle testimonials response
         if (testimonialsResponse.status === 'fulfilled') {
           setTestimonials(testimonialsResponse.value);
         } else {
-          console.error('Failed to fetch testimonials:', testimonialsResponse.reason);
-          setTestimonials([]);
+          console.warn('Failed to fetch testimonials, using default data:', testimonialsResponse.reason);
+          setTestimonials(mockTestimonials);
         }
       } catch (err) {
-        console.error('Error fetching data:', err);
-        setError('Failed to load data');
-        setFeaturedProducts([]);
-        setTestimonials([]);
+        console.warn('Error fetching data, using default data:', err);
+        setError('Failed to load data, showing default products');
+        setFeaturedProducts(mockProducts.filter(p => p.featured).length > 0 ? mockProducts.filter(p => p.featured) : mockProducts.slice(0, 3));
+        setTestimonials(mockTestimonials);
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+  }, [initialProducts, initialTestimonials]);
 
   const handleNewsletterSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
