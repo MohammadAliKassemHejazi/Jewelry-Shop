@@ -16,13 +16,13 @@ const passwordHashing = (password: string): string => {
 const comparePassword = (password: string, existsPassword: string): boolean => {
   const isPasswordCorrect = bcrypt.compareSync(password, existsPassword);
   if (!isPasswordCorrect) {
-    customError(authErrors.AuthInvalidPassword);
+    throw customError(authErrors.AuthInvalidPassword);
   }
   return true;
 };
 
 const createToken = (UserId: string): string => {
-  const token = sign({}, config.webtoken as string, {
+  const token = sign({}, config.webtoken || "fallback_secret_key", {
     expiresIn: 3600 * 30,
     audience: String(UserId),
   });
