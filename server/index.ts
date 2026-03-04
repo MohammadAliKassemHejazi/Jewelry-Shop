@@ -383,13 +383,13 @@ async function createApp(): Promise<Express> {
   
   // Public routes (less strict rate limiting)
   app.use('/api/users', userRouter);
+  app.use('/api/user', usersRouter);
   app.use('/api/categories', categoriesRouter);
   app.use('/api/products', productsRouter);
   app.use('/api/admin/subcategories', subcategoriesRouter);
   
   // Admin routes (could add admin middleware here)
   app.use('/api/admin', adminRouter);
-  app.use('/api/admin/users', usersRouter);
   
   // Routes with file upload capabilities
   app.use('/api/shop', shopUploadMiddleware, shopMiddleWare, shopRouter);
