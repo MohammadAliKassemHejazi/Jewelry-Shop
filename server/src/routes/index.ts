@@ -4,7 +4,7 @@ import categoriesRouter from "./category.route";
 import subcategoriesRouter from "./subcategory.route";
 import productsRouter from "./products.route";
 import adminRouter from "./admin.route";
-import userRouter from "./users.route";
+import userRouter from "./user.route";
 import usersRouter from "./users.route";
 
 // New routes

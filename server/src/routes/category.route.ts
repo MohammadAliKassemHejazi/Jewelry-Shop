@@ -4,6 +4,8 @@ import {
   handleCreateCategory,
   handleUpdateCategory,
   handleDeleteCategory,
+  handleGetCategoryTree,
+  handleGetCategoryById,
 } from "../controllers/category.controller";
 import { protectedRoutes } from "../middlewares";
 
@@ -30,6 +32,8 @@ protectedRoutes(router, protectedRoutesList);
  *                 $ref: '#/components/schemas/Category'
  */
 router.get("/", handleFetchCategories);
+router.get("/tree", handleGetCategoryTree);
+router.get("/:id", handleGetCategoryById);
 
 /**
  * @swagger

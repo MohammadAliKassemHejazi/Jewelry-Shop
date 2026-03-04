@@ -162,7 +162,7 @@ export const articlesApi = {
 
   // Get articles by author
   getByAuthor: async (): Promise<Article[]> => {
-    const response = await httpClient.get('/api/articles/author');
+    const response = await httpClient.get('/api/articles/author/me');
     return response.data.data || [];
   },
 
@@ -355,7 +355,7 @@ export const adminApi = {
 
   // Toggle user status (admin only)
   toggleUserStatus: async (id: string): Promise<User> => {
-    const response = await httpClient.put(`/api/admin/users/${id}/toggle-status`);
+    const response = await httpClient.patch(`/api/admin/users/${id}/toggle-status`);
     return response.data.data;
   },
 
