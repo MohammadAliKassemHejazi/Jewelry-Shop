@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -9,13 +10,20 @@ import AnimatedSection from "@/components/AnimatedSection";
 import ProductCard from "@/components/ProductCard";
 import EnhancedProductCard from "@/components/EnhancedProductCard";
 import { productsApi, categoriesApi } from "@/services/api";
+import { mockProducts, mockCategories } from "@/services/mockData";
 import { Product, Category, ProductFilters } from "@/types";
 import { Search, Filter, Grid, List } from "lucide-react";
 
-const Shop = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(true);
+export interface ShopViewProps {
+  className?: string;
+  initialProducts?: Product[];
+  initialCategories?: Category[];
+}
+
+const Shop: React.FC<ShopViewProps> = ({ initialProducts, initialCategories }) => {
+  const [products, setProducts] = useState<Product[]>(initialProducts || []);
+  const [categories, setCategories] = useState<Category[]>(initialCategories || []);
+  const [loading, setLoading] = useState(!initialProducts || !initialCategories);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -47,8 +55,8 @@ const Shop = () => {
         if (categoriesResponse.status === 'fulfilled') {
           setCategories(categoriesResponse.value);
         } else {
-          console.error('Failed to fetch categories:', categoriesResponse.reason);
-          setCategories([]);
+          console.warn('Failed to fetch categories, using default data:', categoriesResponse.reason);
+          setCategories(mockCategories);
         }
 
         // Handle products response
@@ -56,15 +64,15 @@ const Shop = () => {
           setProducts(productsResponse.value.data);
           setTotalPages(productsResponse.value.pagination.totalPages);
         } else {
-          console.error('Failed to fetch products:', productsResponse.reason);
-          setProducts([]);
+          console.warn('Failed to fetch products, using default data:', productsResponse.reason);
+          setProducts(mockProducts);
           setTotalPages(1);
         }
       } catch (err) {
-        console.error('Error fetching data:', err);
-        setError('Failed to load products');
-        setProducts([]);
-        setCategories([]);
+        console.warn('Error fetching data, using default data:', err);
+        setError('Failed to load products, showing default data');
+        setProducts(mockProducts);
+        setCategories(mockCategories);
         setTotalPages(1);
       } finally {
         setLoading(false);
@@ -72,7 +80,7 @@ const Shop = () => {
     };
 
     fetchData();
-  }, [selectedCategory, searchTerm, sortBy, sortOrder, currentPage]);
+  }, [searchTerm, selectedCategory, sortBy, sortOrder, currentPage]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

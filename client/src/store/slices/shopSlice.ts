@@ -1,13 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category?: string;
-  description?: string;
-}
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../../types";
 
 interface ShopState {
   products: Product[];
@@ -25,13 +17,13 @@ const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
-    setProducts: (state, action) => {
+    setProducts: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
     },
-    setLoading: (state, action) => {
+    setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
-    setError: (state, action) => {
+    setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
   },

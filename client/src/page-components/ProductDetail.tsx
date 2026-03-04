@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -14,7 +15,11 @@ import { Product } from "@/types";
 import { ShoppingCart, Heart, Star, Minus, Plus, Truck, Shield, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 
-const ProductDetail = () => {
+export interface ProductDetailViewProps {
+  className?: string;
+}
+
+const ProductDetail: React.FC<ProductDetailViewProps> = () => {
   const params = useParams();
   const id = params?.id as string;
   const [product, setProduct] = useState<Product | null>(null);
@@ -26,7 +31,7 @@ const ProductDetail = () => {
   const [isWishlisted, setIsWishlisted] = useState(false);
 
   // Fallback dummy data
-  const dummyProduct: Product = {
+  const dummyProduct: Product = React.useMemo(() => ({
     id: id || "1",
     name: "Rose Gold Diamond Ring",
     description: "Exquisite rose gold ring featuring a brilliant cut diamond. Crafted with precision and attention to detail, this piece represents timeless elegance and sophistication. The rose gold setting complements the diamond's natural brilliance, creating a stunning piece perfect for engagements or special occasions.",
@@ -46,9 +51,9 @@ const ProductDetail = () => {
     reviewCount: 24,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
-  };
+  }), [id]);
 
-  const dummyRelatedProducts: Product[] = [
+  const dummyRelatedProducts: Product[] = React.useMemo(() => [
     {
       id: "2",
       name: "Pearl Drop Earrings",
@@ -85,7 +90,7 @@ const ProductDetail = () => {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -116,8 +121,8 @@ const ProductDetail = () => {
           setRelatedProducts(dummyRelatedProducts);
         }
       } catch (err) {
-        console.error('Error fetching product:', err);
-        setError('Failed to load product');
+        console.warn('Error fetching product, using default data:', err);
+        setError('Failed to load product, showing default data');
         setProduct(dummyProduct);
         setRelatedProducts(dummyRelatedProducts);
       } finally {
@@ -126,7 +131,7 @@ const ProductDetail = () => {
     };
 
     fetchProduct();
-  }, [id]);
+  }, [id, dummyProduct, dummyRelatedProducts]);
 
   const handleAddToCart = () => {
     if (!product) return;

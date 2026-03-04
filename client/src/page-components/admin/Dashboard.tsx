@@ -7,13 +7,15 @@ import Link from 'next/link';
 import { adminApi } from '@/services/api';
 import { DashboardStats } from '@/types';
 
-const AdminDashboard: React.FC = () => {
+export interface AdminDashboardViewProps {}
+
+const AdminDashboard: React.FC<AdminDashboardViewProps> = () => {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // Fallback dummy data
-  const dummyStats: DashboardStats = {
+  const dummyStats: DashboardStats = React.useMemo(() => ({
     totalOrders: 567,
     totalRevenue: 125430,
     totalProducts: 89,
@@ -30,7 +32,7 @@ const AdminDashboard: React.FC = () => {
       { month: 'May', revenue: 25000 },
       { month: 'Jun', revenue: 28000 }
     ]
-  };
+  }), []);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -49,7 +51,7 @@ const AdminDashboard: React.FC = () => {
     };
 
     fetchStats();
-  }, []);
+  }, [dummyStats]);
 
   if (loading) {
     return (

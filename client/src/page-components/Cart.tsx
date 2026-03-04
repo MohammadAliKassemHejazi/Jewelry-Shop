@@ -31,7 +31,11 @@ interface Cart {
   updatedAt: string;
 }
 
-const Cart: React.FC = () => {
+export interface CartViewProps {
+  className?: string;
+}
+
+const Cart: React.FC<CartViewProps> = () => {
   const [cart, setCart] = useState<Cart | null>(null);
   const [loading, setLoading] = useState(true);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);

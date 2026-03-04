@@ -1,5 +1,6 @@
-
 "use client";
+import React from "react";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +10,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 
-const Contact = () => {
+export interface ContactViewProps {
+  className?: string;
+}
+
+const Contact: React.FC<ContactViewProps> = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

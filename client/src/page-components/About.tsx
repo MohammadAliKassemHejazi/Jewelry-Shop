@@ -1,5 +1,10 @@
+import React from "react";
 
-const About = () => {
+export interface AboutViewProps {
+  className?: string;
+}
+
+const About: React.FC<AboutViewProps> = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

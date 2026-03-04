@@ -13,7 +13,9 @@ import { adminApi } from '@/services/api';
 import { User as UserType } from '@/types';
 import { toast } from 'sonner';
 
-const AdminUsers: React.FC = () => {
+export interface AdminUsersViewProps {}
+
+const AdminUsers: React.FC<AdminUsersViewProps> = () => {
   const [users, setUsers] = useState<UserType[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -32,8 +34,9 @@ const AdminUsers: React.FC = () => {
       const response = await adminApi.getUsers(1, 100);
       setUsers(response.data);
     } catch (error) {
-      console.error('Failed to fetch users:', error);
-      toast.error('Failed to fetch users');
+      console.warn('Failed to fetch users, using default empty data:', error);
+      toast.error('Failed to fetch users, displaying default view');
+      setUsers([]);
     } finally {
       setLoading(false);
     }

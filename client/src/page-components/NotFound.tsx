@@ -1,8 +1,13 @@
 "use client";
+import React from "react";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-const NotFound = () => {
+export interface NotFoundViewProps {
+  className?: string;
+}
+
+const NotFound: React.FC<NotFoundViewProps> = () => {
   const pathname = usePathname();
 
   useEffect(() => {
