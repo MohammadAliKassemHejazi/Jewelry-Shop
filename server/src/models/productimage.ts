@@ -8,6 +8,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     id!: string;
     // productId!: string;
     imageUrl!: string;
+    isPrimary!: boolean;
 
     static associate(models: any) {
       ProductImage.belongsTo(models.Product, { foreignKey: 'productId', onDelete: 'CASCADE' });
@@ -29,6 +30,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    isPrimary: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   }, {
     sequelize,

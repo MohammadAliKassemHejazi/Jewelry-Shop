@@ -43,11 +43,11 @@ module.exports = (sequelize: Sequelize) => {
       Product.hasMany(models.Favorite, { foreignKey: 'productId', as: 'favoritedBy' });
 
       Product.belongsTo(models.User, { foreignKey: 'ownerId', targetKey: 'id', onDelete: 'CASCADE' });
-      Product.belongsTo(models.Category, { foreignKey: 'categoryId', targetKey: 'id', onDelete: 'CASCADE' });
-      Product.belongsTo(models.SubCategory, { foreignKey: 'subcategoryId', targetKey: 'id', onDelete: 'CASCADE' });
+      Product.belongsTo(models.Category, { foreignKey: 'categoryId', as: 'category', targetKey: 'id', onDelete: 'CASCADE' });
+      Product.belongsTo(models.SubCategory, { foreignKey: 'subcategoryId', as: 'subcategory', targetKey: 'id', onDelete: 'CASCADE' });
 
-      Product.hasMany(models.ProductImage, { foreignKey: 'productId', onDelete: 'CASCADE' });
-      Product.hasMany(models.SizeItem, { foreignKey: 'productId', onDelete: 'CASCADE' });
+      Product.hasMany(models.ProductImage, { foreignKey: 'productId', as: 'productImages', onDelete: 'CASCADE' });
+      Product.hasMany(models.SizeItem, { foreignKey: 'productId', as: 'sizes', onDelete: 'CASCADE' });
     }
   }
 

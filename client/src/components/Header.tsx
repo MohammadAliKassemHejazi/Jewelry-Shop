@@ -30,6 +30,7 @@ const Header = () => {
     };
 
     const fetchCartCount = async () => {
+      if (!isAuthenticated) return;
       try {
         const count = await cartApi.getItemCount();
         setItemCount(count);
@@ -41,7 +42,7 @@ const Header = () => {
     fetchCartCount();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isAuthenticated]);
 
   const navigation = [
     { name: "Home", href: "/" },

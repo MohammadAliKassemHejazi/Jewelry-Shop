@@ -163,3 +163,22 @@
 {"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-03-03 22:39:43"}
 {"level":"info","message":"::1 - - [03/Mar/2026:22:39:46 +0000] \"POST /api/auth/login HTTP/1.1\" 200 371 \"-\" \"curl/8.5.0\"","timestamp":"2026-03-03 22:39:46"}
 {"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-03-03 22:40:43"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-04-01 16:20:12"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:20:26 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 608 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:20:26"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-04-01 16:22:47"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:22:56 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 423 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:22:56"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-04-01 16:23:21"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-04-01 16:25:34"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:25:57 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 423 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:25:57"}
+{"level":"info","message":"Received SIGTERM. Starting graceful shutdown...","timestamp":"2026-04-01 16:26:30"}
+{"level":"info","message":"Database connection closed.","timestamp":"2026-04-01 16:26:30"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-04-01 16:26:39"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:26:56 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 500 423 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:26:56"}
+{"level":"info","message":"Received SIGTERM. Starting graceful shutdown...","timestamp":"2026-04-01 16:27:16"}
+{"level":"info","message":"Database connection closed.","timestamp":"2026-04-01 16:27:16"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-04-01 16:27:27"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:27:32 +0000] \"GET /api/products/featured?limit=6 HTTP/1.1\" 200 3914 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:27:32"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:27:38 +0000] \"GET /api/products?page=1&limit=12&sortBy=name&sortOrder=asc HTTP/1.1\" 200 3023 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:27:38"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:27:45 +0000] \"GET /api/auth/isauthenticated HTTP/1.1\" 200 59 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:27:45"}
+{"level":"info","message":"::1 - - [01/Apr/2026:16:41:29 +0000] \"GET /api/testimonials/verified?limit=3 HTTP/1.1\" 200 26 \"-\" \"curl/8.5.0\"","timestamp":"2026-04-01 16:41:29"}
+{"level":"info","message":"🚀 Server running on port 5300 in development mode","timestamp":"2026-04-01 16:46:30"}
