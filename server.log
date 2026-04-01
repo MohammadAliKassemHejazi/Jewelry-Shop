@@ -1,0 +1,493 @@
+
+> biomimic-dentistry-hub-api@1.0.0 dev
+> nodemon index.ts
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'sqlite',
+  host: 'localhost',
+  port: undefined,
+  database: 'database',
+  use_env_variable: undefined,
+  hasUsername: false,
+  hasPassword: false
+}
+🔗 Connecting to SQLite database at: ./database.sqlite
+📁 Loading 20 model files: [
+  'article.model.ts',
+  'cart.model.ts',
+  'cartitem.model.ts',
+  'category.model.ts',
+  'favorite.model.ts',
+  'newsletter.model.ts',
+  'order.model.ts',
+  'orderitem.model.ts',
+  'payment.model.ts',
+  'permission.model.ts',
+  'product.model.ts',
+  'productimage.ts',
+  'role.model.ts',
+  'rolepermission.model.ts',
+  'roleuser.model.ts',
+  'size.model.ts',
+  'sizeitem.model.ts',
+  'subcategory.model.ts',
+  'testimonial.model.ts',
+  'users.model.ts'
+]
+✅ Loaded model: Article
+✅ Loaded model: Cart
+✅ Loaded model: CartItem
+✅ Loaded model: Category
+✅ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+🎉 Database initialization complete. Models loaded: Article, Cart, CartItem, Category, Favorite, Newsletter, Order, OrderItem, Payment, Permission, Product, ProductImage, Role, RolePermission, RoleUser, Size, SizeItem, SubCategory, Testimonial, User
+🔄 Performing database reset in development...
+✅ Database connection established successfully.
+✅ Database schema has been reset.
+Existing data cleared.
+(sequelize) Warning: Model "User" is declaring public class fields for attribute(s): "id", "name", "surname", "email", "password", "phone", "role", "isAdmin", "avatar", "address", "createdById".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Users created including admin@admin.com.
+(sequelize) Warning: Model "Category" is declaring public class fields for attribute(s): "id", "name", "description".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Categories created.
+(sequelize) Warning: Model "SubCategory" is declaring public class fields for attribute(s): "id", "categoryId", "name".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Subcategories created.
+(sequelize) Warning: Model "Size" is declaring public class fields for attribute(s): "id", "size".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Sizes created.
+(sequelize) Warning: Model "Product" is declaring public class fields for attribute(s): "id", "name", "description", "price", "stock", "image", "images", "sku", "weight", "dimensions", "materials", "gemstones", "featured", "onSale", "salePrice", "rating", "reviewCount", "isActive", "ownerId", "categoryId", "subcategoryId", "metaTitle", "metaDescription", "slug", "tags", "discount".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Products created.
+Failed to seed database: ValidationError [SequelizeValidationError]: notNull Violation: SizeItem.productId cannot be null,
+notNull Violation: SizeItem.sizeId cannot be null
+    at InstanceValidator._validate (/app/server/node_modules/sequelize/src/instance-validator.js:78:13)
+    at async InstanceValidator._validateAndRunHooks (/app/server/node_modules/sequelize/src/instance-validator.js:111:7)
+    at async InstanceValidator.validate (/app/server/node_modules/sequelize/src/instance-validator.js:93:12)
+    at async SizeItem.save (/app/server/node_modules/sequelize/src/model.js:4077:7)
+    at async Function.create (/app/server/node_modules/sequelize/src/model.js:2305:12)
+    at async seedDatabase (/app/server/seedDataBase.ts:255:9)
+    at async initializeDatabase (/app/server/index.ts:427:7)
+    at async startServer (/app/server/index.ts:447:5) {
+  errors: [
+    ValidationErrorItem {
+      message: 'SizeItem.productId cannot be null',
+      type: 'notNull Violation',
+      path: 'productId',
+      value: null,
+      origin: 'CORE',
+      instance: [SizeItem],
+      validatorKey: 'is_null',
+      validatorName: null,
+      validatorArgs: []
+    },
+    ValidationErrorItem {
+      message: 'SizeItem.sizeId cannot be null',
+      type: 'notNull Violation',
+      path: 'sizeId',
+      value: null,
+      origin: 'CORE',
+      instance: [SizeItem],
+      validatorKey: 'is_null',
+      validatorName: null,
+      validatorArgs: []
+    }
+  ]
+}
+✅ Database seeded successfully.
+(sequelize) Warning: Model "SizeItem" is declaring public class fields for attribute(s): "id", "productId", "sizeId", "quantity".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+[32minfo[39m: 🚀 Server running on port 5300 in development mode {"timestamp":"2026-04-01 16:27:27"}
+🚀 Server running on http://localhost:5300
+[32minfo[39m: ::1 - - [01/Apr/2026:16:27:32 +0000] "GET /api/products/featured?limit=6 HTTP/1.1" 200 3914 "-" "curl/8.5.0" {"timestamp":"2026-04-01 16:27:32"}
+[32minfo[39m: ::1 - - [01/Apr/2026:16:27:38 +0000] "GET /api/products?page=1&limit=12&sortBy=name&sortOrder=asc HTTP/1.1" 200 3023 "-" "curl/8.5.0" {"timestamp":"2026-04-01 16:27:38"}
+[32minfo[39m: ::1 - - [01/Apr/2026:16:27:45 +0000] "GET /api/auth/isauthenticated HTTP/1.1" 200 59 "-" "curl/8.5.0" {"timestamp":"2026-04-01 16:27:45"}
+[32minfo[39m: ::1 - - [01/Apr/2026:16:41:29 +0000] "GET /api/testimonials/verified?limit=3 HTTP/1.1" 200 26 "-" "curl/8.5.0" {"timestamp":"2026-04-01 16:41:29"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'sqlite',
+  host: 'localhost',
+  port: undefined,
+  database: 'database',
+  use_env_variable: undefined,
+  hasUsername: false,
+  hasPassword: false
+}
+🔗 Connecting to SQLite database at: ./database.sqlite
+📁 Loading 20 model files: [
+  'article.model.ts',
+  'cart.model.ts',
+  'cartitem.model.ts',
+  'category.model.ts',
+  'favorite.model.ts',
+  'newsletter.model.ts',
+  'order.model.ts',
+  'orderitem.model.ts',
+  'payment.model.ts',
+  'permission.model.ts',
+  'product.model.ts',
+  'productimage.ts',
+  'role.model.ts',
+  'rolepermission.model.ts',
+  'roleuser.model.ts',
+  'size.model.ts',
+  'sizeitem.model.ts',
+  'subcategory.model.ts',
+  'testimonial.model.ts',
+  'users.model.ts'
+]
+✅ Loaded model: Article
+✅ Loaded model: Cart
+✅ Loaded model: CartItem
+✅ Loaded model: Category
+✅ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsle✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+\xf0\x9f\x8e🔄 Performing database reset in development...
+✅ Database connection established successfully.
+✅ Database schema has been reset.
+Existing data cleared.
+(sequelize) Warning: Model "User" is declaring public class fields for attribute(s): "id", 🔄 Performing database reset in development...
+✅ Database connection established successfully.
+✅ Database schema has been reset.
+Existing data cleared.
+(sequelize) Warning: Model "User" is declaring public class fields for attribute(s): "id", "name", "surname", "email", "password", "phone", "role", "isAdmin", "avatar", "address", "createdById".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Users created including admin@admin.com.
+(sequelize) Warning: Model "Category" is declaring public class fields for attribute(s): "id", "name", "description".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Categories created.
+(sequelize) Warning: Model "SubCategory" is declaring public class fields for attribute(s): "id", "categoryId", "name".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Subcategories created.
+(sequelize) Warning: Model "Size" is declaring public class fields for attribute(s): "id", "size".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Sizes created.
+(sequelize) Warning: Model "Product" is declaring public class fields for attribute(s): "id", "name", "description", "price", "stock", "image", "images", "sku", "weight", "dimensions", "materials", "gemstones", "featured", "onSale", "salePrice", "rating", "reviewCount", "isActive", "ownerId", "categoryId", "subcategoryId", "metaTitle", "metaDescription", "slug", "tags", "discount".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Products created.
+Failed to seed database: ValidationError [SequelizeValidationError]: notNull Violation: SizeItem.productId cannot be null,
+notNull Violation: SizeItem.sizeId cannot be null
+    at InstanceValidator._validate (/app/server/node_modules/sequelize/src/instance-validator.js:78:13)
+    at async InstanceValidator._validateAndRunHooks (/app/server/node_modules/sequelize/src/instance-validator.js:111:7)
+    at async InstanceValidator.validate (/app/server/node_modules/sequelize/src/instance-validator.js:93:12)
+    at async SizeItem.save (/app/server/node_modules/sequelize/src/model.js:4077:7)
+    at async Function.create (/app/server/node_modules/sequelize/src/model.js:2305:12)
+    at async seedDatabase (/app/server/seedDataBase.ts:255:9)
+    at async initializeDatabase (/app/server/index.ts:427:7)
+    at async startServer (/app/server/index.ts:447:5) {
+  errors: [
+    ValidationErrorItem {
+      message: 'SizeItem.productId cannot be null',
+      type: 'notNull Violation',
+      path: 'productId',
+      value: null,
+      origin: 'CORE',
+      instance: [SizeItem],
+      validatorKey: 'is_null',
+      validatorName: null,
+      validatorArgs: []
+    },
+    ValidationErrorItem {
+      message: 'SizeItem.sizeId cannot be null',
+      type: 'notNull Violation',
+      path: 'sizeId',
+      value: null,
+      origin: 'CORE',
+      instance: [SizeItem],
+      validatorKey: 'is_null',
+      validatorName: null,
+      validatorArgs: []
+    }
+  ]
+}
+✅ Database seeded successfully.
+(sequelize) Warning: Model "SizeItem" is declaring public class fields for attribute(s): "id", "productId", "sizeId", "quantity".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Uncaught Exception: Error: listen EADDRINUSE: address already in use :::5300
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at Function.listen (/app/server/node_modules/express/lib/application.js:635:24)
+    at startServer (/app/server/index.ts:454:24) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5300
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+🎉 Database initialization complete. Models loaded: Article, Cart, CartItem, Category, Favorite, Newsletter, Order, OrderItem, Payment, Permission, Product, ProductImage, Role, RolePermission, RoleUser, Size, SizeItem, SubCategory, Testimonial, User
+❌ Missing required environment variables: NODE_ENV
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node index.ts`[39m
+✅ Config loaded from: /app/server/src/config/db.config.ts
+🔧 Database config: {
+  dialect: 'sqlite',
+  host: 'localhost',
+  port: undefined,
+  database: 'database',
+  use_env_variable: undefined,
+  hasUsername: false,
+  hasPassword: false
+}
+🔗 Connecting to SQLite database at: ./database.sqlite
+📁 Loading 20 model files: [
+  'article.model.ts',
+  'cart.model.ts',
+  'cartitem.model.ts',
+  'category.model.ts',
+  'favorite.model.ts',
+  'newsletter.model.ts',
+  'order.model.ts',
+  'orderitem.model.ts',
+  'payment.model.ts',
+  'permission.model.ts',
+  'product.model.ts',
+  'productimage.ts',
+  'role.model.ts',
+  'rolepermission.model.ts',
+  'roleuser.model.ts',
+  'size.model.ts',
+  'sizeitem.model.ts',
+  'subcategory.model.ts',
+  'testimonial.model.ts',
+  'users.model.ts'
+]
+✅ Loaded model: Article
+✅ Loaded model: Cart
+✅ Loaded model: CartItem
+✅ Loaded model: Category
+✅ Loaded model: Favorite
+✅ Loaded model: Newsletter
+✅ Loaded model: Order
+✅ Loaded model: OrderItem
+✅ Loaded model: Payment
+✅ Loaded model: Permission
+✅ Loaded model: Product
+✅ Loaded model: ProductImage
+✅ Loaded model: Role
+✅ Loaded model: RolePermission
+✅ Loaded model: RoleUser
+✅ Loaded model: Size
+✅ Loaded model: SizeItem
+✅ Loaded model: SubCategory
+✅ Loaded model: Testimonial
+✅ Loaded model: User
+🔗 Set up associations for: Article
+🔗 Set up associations for: Cart
+🔗 Set up associations for: CartItem
+🔗 Set up associations for: Category
+🔗 Set up associations for: Favorite
+🔗 Set up associations for: Newsletter
+🔗 Set up associations for: Order
+🔗 Set up associations for: OrderItem
+🔗 Set up associations for: Payment
+🔗 Set up associations for: Permission
+🔗 Set up associations for: Product
+🔗 Set up associations for: ProductImage
+🔗 Set up associations for: Role
+🔗 Set up associations for: RolePermission
+🔗 Set up associations for: RoleUser
+🔗 Set up associations for: Size
+🔗 Set up associations for: SizeItem
+🔗 Set up associations for: SubCategory
+🔗 Set up associations for: Testimonial
+🔗 Set up associations for: User
+🎉 Database initialization complete. Models loaded: Article, Cart, CartItem, Category, Favorite, Newsletter, Order, OrderItem, Payment, Permission, Product, ProductImage, Role, RolePermission, RoleUser, Size, SizeItem, SubCategory, Testimonial, User
+🔄 Performing database reset in development...
+✅ Database connection established successfully.
+✅ Database schema has been reset.
+Existing data cleared.
+(sequelize) Warning: Model "User" is declaring public class fields for attribute(s): "id", "name", "surname", "email", "password", "phone", "role", "isAdmin", "avatar", "address", "createdById".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Users created including admin@admin.com.
+(sequelize) Warning: Model "Category" is declaring public class fields for attribute(s): "id", "name", "description".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Categories created.
+(sequelize) Warning: Model "SubCategory" is declaring public class fields for attribute(s): "id", "categoryId", "name".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Subcategories created.
+(sequelize) Warning: Model "Size" is declaring public class fields for attribute(s): "id", "size".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Sizes created.
+(sequelize) Warning: Model "Product" is declaring public class fields for attribute(s): "id", "name", "description", "price", "stock", "image", "images", "sku", "weight", "dimensions", "materials", "gemstones", "featured", "onSale", "salePrice", "rating", "reviewCount", "isActive", "ownerId", "categoryId", "subcategoryId", "metaTitle", "metaDescription", "slug", "tags", "discount".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+Products created.
+Failed to seed database: ValidationError [SequelizeValidationError]: notNull Violation: SizeItem.productId cannot be null,
+notNull Violation: SizeItem.sizeId cannot be null
+    at InstanceValidator._validate (/app/server/node_modules/sequelize/src/instance-validator.js:78:13)
+    at async InstanceValidator._validateAndRunHooks (/app/server/node_modules/sequelize/src/instance-validator.js:111:7)
+    at async InstanceValidator.validate (/app/server/node_modules/sequelize/src/instance-validator.js:93:12)
+    at async SizeItem.save (/app/server/node_modules/sequelize/src/model.js:4077:7)
+    at async Function.create (/app/server/node_modules/sequelize/src/model.js:2305:12)
+    at async seedDatabase (/app/server/seedDataBase.ts:255:9)
+    at async initializeDatabase (/app/server/index.ts:427:7)
+    at async startServer (/app/server/index.ts:447:5) {
+  errors: [
+    ValidationErrorItem {
+      message: 'SizeItem.productId cannot be null',
+      type: 'notNull Violation',
+      path: 'productId',
+      value: null,
+      origin: 'CORE',
+      instance: [SizeItem],
+      validatorKey: 'is_null',
+      validatorName: null,
+      validatorArgs: []
+    },
+    ValidationErrorItem {
+      message: 'SizeItem.sizeId cannot be null',
+      type: 'notNull Violation',
+      path: 'sizeId',
+      value: null,
+      origin: 'CORE',
+      instance: [SizeItem],
+      validatorKey: 'is_null',
+      validatorName: null,
+      validatorArgs: []
+    }
+  ]
+}
+✅ Database seeded successfully.
+(sequelize) Warning: Model "SizeItem" is declaring public class fields for attribute(s): "id", "productId", "sizeId", "quantity".
+These class fields are shadowing Sequelize's attribute getters & setters.
+See https://sequelize.org/main/manual/model-basics.html#caveat-with-public-class-fields
+[32minfo[39m: 🚀 Server running on port 5300 in development mode {"timestamp":"2026-04-01 16:46:30"}
+🚀 Server running on http://localhost:5300

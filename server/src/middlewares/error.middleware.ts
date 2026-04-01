@@ -53,15 +53,17 @@ export const errorHandler = (
     data = { details: error.message };
   }
 
-  // Log error for debugging
-  console.error('Error:', {
-    message: error.message,
-    stack: error.stack,
-    url: req.url,
-    method: req.method,
-    ip: req.ip,
-    userAgent: req.get('User-Agent')
-  });
+  // Log error for debugging (skip verbose logging for expected 401s like missing auth headers)
+  if (statusCode !== 401) {
+    console.error('Error:', {
+      message: error.message,
+      stack: error.stack,
+      url: req.url,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent')
+    });
+  }
 
   // Send error response
   res.status(statusCode).json({

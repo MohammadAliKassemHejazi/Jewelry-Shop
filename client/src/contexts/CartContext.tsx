@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { cartApi } from '@/services/api';
+import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 
 interface CartItem {
@@ -31,15 +32,15 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isAuthenticated } = useAuth();
   const [items, setItems] = useState<CartItem[]>([]);
   const [cartCount, setCartCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   const refreshCart = useCallback(async () => {
+    if (!isAuthenticated) return;
     try {
-      // In a real app with auth, we should check if user is logged in
-      // For now, we assume the API handles session/guest cart
       const cartData = await cartApi.get();
       if (cartData) {
         setItems(cartData.items || []);
@@ -55,7 +56,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Failed to fetch cart:', error);
       // Don't show toast on every mount failure (silent fail for guest usually)
     }
-  }, []);
+  }, [isAuthenticated]);
 
   // Initial fetch
   useEffect(() => {
